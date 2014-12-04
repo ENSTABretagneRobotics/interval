@@ -1,4 +1,4 @@
-// Simple interval library from Luc JAULIN, with minor modifications from Fabrice LE BARS.
+// Simple interval library from Luc JAULIN, with minor modifications from Fabrice LE BARS and Jeremy NICOLA.
 
 #include "interval.h"
 
@@ -301,7 +301,7 @@ bool operator<(const borne &x, const borne &y)
 	return x.val < y.val;
 }
 //----------------------------------------------------------------------
-// Constructors
+// Constructors/destructors
 //----------------------------------------------------------------------
 interval::interval()
 {
@@ -446,6 +446,16 @@ std::ostream& operator<<(std::ostream& os, const interval& a)
 	}
 	else os << a.inf;
 	return os;
+}
+//----------------------------------------------------------------------
+// Member functions
+//----------------------------------------------------------------------
+interval& interval::Intersect(const interval& Y)
+{
+	interval X = *this;
+	interval Z = Inter(X, Y);
+	*this = Z;
+	return *this;
 }
 //----------------------------------------------------------------------
 // Interval-valued functions
@@ -698,14 +708,6 @@ interval Union(vector<interval> x)
 	return r;
 }
 //----------------------------------------------------------------------
-interval& interval::Intersect(const interval& Y)
-{
-	interval X = *this;
-	interval Z = Inter(X, Y);
-	*this = Z;
-	return *this;
-}
-//----------------------------------------------------------------------
 interval InterMin(const interval& a, const interval& b, char c)
 {
 	interval y(0, 0);
@@ -833,54 +835,54 @@ bool In(double a, const interval& b)
 //----------------------------------------------------------------------
 // Contractors
 //----------------------------------------------------------------------
-void Cadd(interval& Z, interval& Y, interval& X, int sens)
+void Cadd(interval& Z, interval& X, interval& Y, int sens)
 {
-	// Z=Y+X         =>  sens=1;
-	// Y=Z-X; X=Z-Y  =>  sens=-1;
-	if (sens != -1) { Z = Inter(Z, Y + X); }
-	if (sens != 1) { Y = Inter(Y, Z - X); X = Inter(X, Z - Y); }
+	// Z=X+Y         =>  sens=1;
+	// X=Z-Y Y=Z-X;  =>  sens=-1;
+	if (sens != -1) { Z = Inter(Z, X + Y); }
+	if (sens != 1) { X = Inter(X, Z - Y); Y = Inter(Y, Z - X); }
 }
 //----------------------------------------------------------------------
-void Cadd(interval& Z, double y, interval& X, int sens)
+void Cadd(interval& Z, double x, interval& Y, int sens)
 {
-	if (sens != -1) { Z = Inter(Z, y + X); }
-	if (sens != 1) { X = Inter(X, Z - y); }
-}
-//----------------------------------------------------------------------
-void Cadd(interval& Z, interval& Y, double x, int sens)
-{
-	if (sens != -1) { Z = Inter(Z, Y + x); }
+	if (sens != -1) { Z = Inter(Z, x + Y); }
 	if (sens != 1) { Y = Inter(Y, Z - x); }
 }
 //----------------------------------------------------------------------
-void Cadd(double z, interval& Y, interval& X, int sens)
+void Cadd(interval& Z, interval& X, double y, int sens)
+{
+	if (sens != -1) { Z = Inter(Z, X + y); }
+	if (sens != 1) { X = Inter(X, Z - y); }
+}
+//----------------------------------------------------------------------
+void Cadd(double z, interval& X, interval& Y, int sens)
 { 
-	if (sens != 1) { Y = Inter(Y, z - X); X = Inter(X, z - Y); }
+	if (sens != 1) { X = Inter(X, z - Y); Y = Inter(Y, z - X); }
 }
 //----------------------------------------------------------------------
-void Csub(interval& Z, interval& Y, interval& X, int sens)
+void Csub(interval& Z, interval& X, interval& Y, int sens)
 {
-	// Z=Y-X           =>  sens=1;
-	// Y=Z+X; X=Y-Z    =>  sens=-1;
-	if (sens != -1) { Z = Inter(Z, Y - X); }
-	if (sens != 1) { Y = Inter(Y, Z + X); X = Inter(X, Y - Z); }
+	// Z=X-Y           =>  sens=1;
+	// X=Z+Y Y=X-Z;    =>  sens=-1;
+	if (sens != -1) { Z = Inter(Z, X - Y); }
+	if (sens != 1) { X = Inter(X, Z + Y); Y = Inter(Y, X - Z); }
 }
 //----------------------------------------------------------------------
-void Csub(interval& Z, double y, interval& X, int sens)
+void Csub(interval& Z, double x, interval& Y, int sens)
 {
-	if (sens != -1) { Z = Inter(Z, y - X); }
-	if (sens != 1) { X = Inter(X, y - Z); }
+	if (sens != -1) { Z = Inter(Z, x - Y); }
+	if (sens != 1) { Y = Inter(Y, x - Z); }
 }
 //----------------------------------------------------------------------
-void Csub(interval& Z, interval& Y, double x, int sens)
+void Csub(interval& Z, interval& X, double y, int sens)
 {
-	if (sens != -1) { Z = Inter(Z, Y - x); }
-	if (sens != 1) { Y = Inter(Y, Z + x); }
+	if (sens != -1) { Z = Inter(Z, X - y); }
+	if (sens != 1) { X = Inter(X, Z + y); }
 }
 //----------------------------------------------------------------------
-void Csub(double z, interval& Y, interval& X, int sens)
+void Csub(double z, interval& X, interval& Y, int sens)
 {
-	if (sens != 1) { Y = Inter(Y, z + X); X = Inter(X, Y - z); }
+	if (sens != 1) { X = Inter(X, z + Y); Y = Inter(Y, X - z); }
 }
 //----------------------------------------------------------------------
 void Csub(interval& Y, interval& X, int sens)
@@ -891,13 +893,13 @@ void Csub(interval& Y, interval& X, int sens)
 	if (sens != 1) X = Inter(X, -Y);
 }
 //----------------------------------------------------------------------
-void Cmul(interval& Z, interval& Y, interval& X, int sens)
+void Cmul(interval& Z, interval& X, interval& Y, int sens)
 {
-	// Z=Y*X           =>  sens=1;
-	// Y=Z/X; X=Z/Y    =>  sens=-1; 
+	// Z=X*Y           =>  sens=1;
+	// X=Z/Y; Y=Z/X    =>  sens=-1; 
 	if (sens != -1)  
 	{ 
-		Z = Inter(Z, Y*X); 
+		Z = Inter(Z, X*Y); 
 	}
 	if (sens != 1) 
 	{
@@ -907,104 +909,104 @@ void Cmul(interval& Z, interval& Y, interval& X, int sens)
 		{
 			interval Xd, Xg;
 			interval Yd, Yg;
-			Yg = Inter(Y, interval(-oo, 0)), Yd = Inter(Y, interval(0, oo));
 			Xg = Inter(X, interval(-oo, 0)), Xd = Inter(X, interval(0, oo));
+			Yg = Inter(Y, interval(-oo, 0)), Yd = Inter(Y, interval(0, oo));
 
 			if (Z.inf > 0)
 			{
-				if (Xd.sup*Yd.sup < Z.inf)
+				if (Yd.sup*Xd.sup < Z.inf)
 				{
 					Xd = interval();
 					Yd = interval();
 				}
 				else
 				{
-					if ((Xd.sup != 0) && (Yd.sup != 0))
+					if ((Yd.sup != 0) && (Xd.sup != 0))
 					{
-						Xd = Inter(Xd, interval(Z.inf / Yd.sup, oo));
 						Yd = Inter(Yd, interval(Z.inf / Xd.sup, oo));
+						Xd = Inter(Xd, interval(Z.inf / Yd.sup, oo));
 					}
 				}
-				if (Xg.inf*Yg.inf < Z.inf)
+				if (Yg.inf*Xg.inf < Z.inf)
 				{
 					Xg = interval();
 					Yg = interval();
 				}
 				else
 				{
-					if ((Xg.inf != 0) && (Yg.inf != 0))
+					if ((Yg.inf != 0) && (Xg.inf != 0))
 					{
-						Xg = Inter(Xg, interval(Z.inf / Yg.inf, -oo));
 						Yg = Inter(Yg, interval(Z.inf / Xg.inf, -oo));
+						Xg = Inter(Xg, interval(Z.inf / Yg.inf, -oo));
 					}
 				}
-				X = Inter(X, Union(Xd, Xg));
 				Y = Inter(Y, Union(Yd, Yg));
+				X = Inter(X, Union(Xd, Xg));
 			}
 			if (Z.sup<0)
 			{
-				if (Xg.inf*Yd.sup>Z.sup)
-				{
-					Xg = interval();
-					Yd = interval();
-				}
-				else
-				{
-					if ((Xg.inf != 0) && (Yd.sup != 0))
-					{
-						Xg = Inter(Xg, interval(Z.sup / Yd.sup, -oo));
-						Yd = Inter(Yd, interval(Z.sup / Xg.inf, oo));
-					}
-				}
-				if (Xd.sup*Yg.inf > Z.sup)
+				if (Yg.inf*Xd.sup>Z.sup)
 				{
 					Xd = interval();
 					Yg = interval();
 				}
 				else
 				{
-					if ((Xd.sup != 0) && (Yg.inf != 0))
+					if ((Yg.inf != 0) && (Xd.sup != 0))
 					{
-						Xd = Inter(Xd, interval(Z.sup / Yg.inf, oo));
 						Yg = Inter(Yg, interval(Z.sup / Xd.sup, -oo));
+						Xd = Inter(Xd, interval(Z.sup / Yg.inf, oo));
 					}
 				}
-				X = Inter(X, Union(Xd, Xg));
+				if (Yd.sup*Xg.inf > Z.sup)
+				{
+					Yd = interval();
+					Xg = interval();
+				}
+				else
+				{
+					if ((Yd.sup != 0) && (Xg.inf != 0))
+					{
+						Yd = Inter(Yd, interval(Z.sup / Xg.inf, oo));
+						Xg = Inter(Xg, interval(Z.sup / Yd.sup, -oo));
+					}
+				}
 				Y = Inter(Y, Union(Yd, Yg));
+				X = Inter(X, Union(Xd, Xg));
 			}
 		}
 		//modifs  ???
 
-		Y = Inter(Y, Z/X); X = Inter(X, Z/Y); //Y = Inter(Y,Z/X);
+		X = Inter(X, Z/Y); Y = Inter(Y, Z/X); //X = Inter(X,Z/Y);
 	}
 }
 //----------------------------------------------------------------------
-/*void Cmul(interval& Z, interval& Y, interval& X, int sens)
+/*void Cmul(interval& Z, interval& X, interval& Y, int sens)
 { 
-// Z=Y*X           =>  sens=1;
-// Y=Z/X; X=Z/Y    =>  sens=-1;  
-if (sens!=-1)  {Z=Inter(Z,Y*X);}
-if (sens!=1) {Y=Inter(Y,Z/X); X=Inter(X,Z/Y); Y=Inter(Y,Z/X); }
+// Z=X*Y           =>  sens=1;
+// X=Z/Y; Y=Z/X    =>  sens=-1;  
+if (sens != -1) { Z = Inter(Z,X*Y); }
+if (sens != 1) { X = Inter(X,Z/Y); Y = Inter(Y,Z/X); X = Inter(X,Z/Y); }
 }*/
 //----------------------------------------------------------------------
-void Cmul(interval& Z, double y, interval& X, int sens)
+void Cmul(interval& Z, double x, interval& Y, int sens)
 {
-	if (sens != -1) { Z = Inter(Z, y*X); }
-	if (sens != 1) { X = Inter(X, Z/y); }
-}
-//----------------------------------------------------------------------
-void Cmul(interval& Z, interval& Y, double x, int sens)
-{
-	if (sens != -1) { Z = Inter(Z, Y*x); }
+	if (sens != -1) { Z = Inter(Z, x*Y); }
 	if (sens != 1) { Y = Inter(Y, Z/x); }
 }
 //----------------------------------------------------------------------
-void Cdiv(interval& Z, interval& Y, interval& X, int sens)
+void Cmul(interval& Z, interval& X, double y, int sens)
 {
-	// Z=Y/X           =>  sens=1;
-	// Y=Z*X; X=Y/Z    =>  sens=-1;
-	if (sens != -1) { Z = Inter(Z, Y/X); }
-	if (sens != 1) { Y = Inter(Y, Z*X); X = Inter(X, Y/Z); }
+	if (sens != -1) { Z = Inter(Z, X*y); }
+	if (sens != 1) { X = Inter(X, Z/y); }
+}
+//----------------------------------------------------------------------
+void Cdiv(interval& Z, interval& X, interval& Y, int sens)
+{
+	// Z=X/Y           =>  sens=1;
+	// X=Z*Y; Y=X/Z    =>  sens=-1;
+	if (sens != -1) { Z = Inter(Z, X/Y); }
+	if (sens != 1) { X = Inter(X, Z*Y); Y = Inter(Y, X/Z); }
 }
 //----------------------------------------------------------------------
 void Cequal(interval& Y, interval& X, int sens)
