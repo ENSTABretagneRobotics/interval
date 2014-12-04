@@ -1,4 +1,4 @@
-// Simple interval library from Luc JAULIN, with minor modifications from Fabrice LE BARS.
+// Simple interval library from Luc JAULIN, with minor modifications from Fabrice LE BARS and Jeremy NICOLA.
 
 #include "imatrix.h"
 
@@ -6,7 +6,7 @@ using namespace TNT;
 using namespace JAMA;
 
 //----------------------------------------------------------------------
-// Constructors
+// Constructors/destructors
 //----------------------------------------------------------------------
 imatrix::imatrix()
 {   
@@ -151,6 +151,20 @@ std::ostream& operator<<(std::ostream& os, const imatrix& X)
 	return (os);
 }
 //----------------------------------------------------------------------
+// Member functions
+//----------------------------------------------------------------------
+interval imatrix::GetVal(int i,int j) const
+{ return data[j-1][i-1]; };
+//----------------------------------------------------------------------
+void imatrix::SetVal(int i,int j,interval X)
+{ data[j-1][i-1] = X; };
+//----------------------------------------------------------------------
+int imatrix::dim1(void) const
+{ return data.dim2(); };
+//----------------------------------------------------------------------
+int imatrix::dim2(void) const
+{ return data.dim1(); };
+//----------------------------------------------------------------------
 // imatrix-valued functions
 //----------------------------------------------------------------------
 imatrix	iZeros(int n, int m)
@@ -200,18 +214,6 @@ imatrix RotationPhiThetaPsi(interval& phi, interval& theta, interval& psi)
 }
 //----------------------------------------------------------------------
 // Other functions
-//----------------------------------------------------------------------
-interval imatrix::GetVal(int i,int j) const
-{ return data[j-1][i-1]; };
-//----------------------------------------------------------------------
-void imatrix::SetVal(int i,int j,interval X)
-{ data[j-1][i-1] = X; };
-//----------------------------------------------------------------------
-int imatrix::dim1(void) const
-{ return data.dim2(); };
-//----------------------------------------------------------------------
-int imatrix::dim2(void) const
-{ return data.dim1(); };
 //----------------------------------------------------------------------
 rmatrix Center(const imatrix& X)
 {  

@@ -1,4 +1,4 @@
-// Simple interval library from Luc JAULIN, with minor modifications from Fabrice LE BARS.
+// Simple interval library from Luc JAULIN, with minor modifications from Fabrice LE BARS and Jeremy NICOLA.
 
 #ifndef __IMATRIX__
 #define __IMATRIX__
@@ -12,7 +12,7 @@ public:
 
 public:
 	//----------------------------------------------------------------------
-	// Constructors
+	// Constructors/destructors
 	//----------------------------------------------------------------------
 	imatrix();
 	imatrix(int, int);
@@ -35,51 +35,56 @@ public:
 	interval operator()(int i, int j) const;
 	friend std::ostream& operator<<(std::ostream&, const imatrix&);
 	//----------------------------------------------------------------------
-	// imatrix-valued functions
+	// Member functions
 	//----------------------------------------------------------------------
-	friend imatrix iZeros(int n, int m);
-	friend imatrix iEye(int n);
-	friend imatrix Transpose(const imatrix& X);
-	friend imatrix RotationPhiThetaPsi(interval& phi, interval& theta, interval& psi);
-	//----------------------------------------------------------------------
-	// Other functions
-	//----------------------------------------------------------------------
-	interval GetVal(int,int) const;
-	void SetVal(int,int,interval);
+	interval GetVal(int, int) const;
+	void SetVal(int, int, interval);
 	int dim1(void) const;
 	int dim2(void) const;
-	friend rmatrix Center(const imatrix&);
-	friend box Row(const imatrix& B, int i);
-	friend box Column(const imatrix& B, int j);
-	friend box ToBox(const imatrix&);
-	//----------------------------------------------------------------------
-	// Contractors
-	//----------------------------------------------------------------------
-#define Cmult Cmul
-	friend void Cmul(imatrix& C, imatrix& A, imatrix& B);
-	friend void Cmul(box& c, imatrix& A, box& b);
-	friend void Crot(imatrix&);
-	friend void Cantisym(imatrix& A);
-
-	/*friend void         Update            (imatrix&);
-	friend imatrix          Rand              (const imatrix& X);
-	friend interval     Determinant       (imatrix&, imatrix&);
-	friend bool         Emptyimatrix          (const imatrix&);
-	friend bool	    Disjoint	      (const imatrix&,const imatrix&);
-	friend iboolean	    In		      (imatrix,imatrix);
-	friend imatrix	    Inf 	      (imatrix);
-	friend imatrix	    Inter 	      (const imatrix&,const imatrix&);
-	friend imatrix          Concat            (const imatrix&, const imatrix&);
-	friend interval     Norm              (imatrix);
-	friend interval     NormEuclid        (imatrix, imatrix);
-	friend interval     NormInf           (imatrix, imatrix);
-	friend bool	    Subset	      (imatrix&,imatrix&);
-	friend bool	    Subset	      (imatrix&,imatrix&,double);
-	friend imatrix	    Sup 	      (imatrix);
-	friend imatrix	    Union	      (imatrix&,imatrix&);
-	friend double	    Width	      (imatrix&);
-	friend double	    Width	      (imatrix&,vector<int>&);
-	friend double	    Width	      (imatrix&,imatrix&);
-	friend imatrix          Zeros             (int,int);*/
 };
+
+//----------------------------------------------------------------------
+// imatrix-valued functions
+//----------------------------------------------------------------------
+imatrix iZeros(int n, int m);
+imatrix iEye(int n);
+imatrix Transpose(const imatrix& X);
+imatrix RotationPhiThetaPsi(interval& phi, interval& theta, interval& psi);
+//----------------------------------------------------------------------
+// Other functions
+//----------------------------------------------------------------------
+rmatrix Center(const imatrix&);
+box Row(const imatrix& B, int i);
+box Column(const imatrix& B, int j);
+box ToBox(const imatrix&);
+//----------------------------------------------------------------------
+// Contractors
+//----------------------------------------------------------------------
+#define Cmult Cmul
+void Cmul(imatrix& C, imatrix& A, imatrix& B);
+void Cmul(box& c, imatrix& A, box& b);
+void Crot(imatrix&);
+void Cantisym(imatrix& A);
+
+/*void         Update            (imatrix&);
+imatrix          Rand              (const imatrix& X);
+interval     Determinant       (imatrix&, imatrix&);
+bool         Emptyimatrix          (const imatrix&);
+bool	    Disjoint	      (const imatrix&,const imatrix&);
+iboolean	    In		      (imatrix,imatrix);
+imatrix	    Inf 	      (imatrix);
+imatrix	    Inter 	      (const imatrix&,const imatrix&);
+imatrix          Concat            (const imatrix&, const imatrix&);
+interval     Norm              (imatrix);
+interval     NormEuclid        (imatrix, imatrix);
+interval     NormInf           (imatrix, imatrix);
+bool	    Subset	      (imatrix&,imatrix&);
+bool	    Subset	      (imatrix&,imatrix&,double);
+imatrix	    Sup 	      (imatrix);
+imatrix	    Union	      (imatrix&,imatrix&);
+double	    Width	      (imatrix&);
+double	    Width	      (imatrix&,vector<int>&);
+double	    Width	      (imatrix&,imatrix&);
+imatrix          Zeros             (int,int);*/
+
 #endif // __IMATRIX__

@@ -1,11 +1,11 @@
-// Simple interval library from Luc JAULIN, with minor modifications from Fabrice LE BARS.
+// Simple interval library from Luc JAULIN, with minor modifications from Fabrice LE BARS and Jeremy NICOLA.
 
 #include "box.h"
 
 using namespace std;
 
 //----------------------------------------------------------------------
-// Constructors
+// Constructors/destructors
 //----------------------------------------------------------------------
 box::box()
 {
@@ -155,6 +155,56 @@ std::ostream& operator<<(std::ostream& os, const box& X)
 	return os;
 }
 //----------------------------------------------------------------------
+// Member functions
+//----------------------------------------------------------------------
+box& box::Intersect(const box& Y)
+{
+	box X = *this;
+	box Z = Inter(X, Y);
+	*this = Z;
+	return *this;
+}
+//----------------------------------------------------------------------
+double box::Width(void)
+{
+	box X = *this;
+	int i = AxePrincipal(X);
+	interval Xi = X[i];
+	double w = Xi.sup - Xi.inf;
+	return (w);
+}
+//----------------------------------------------------------------------
+double box::SumWidth(void)
+{  
+	box X = *this;
+	if (X.IsEmpty()) return -oo;
+	double w = X[1].sup-X[1].inf;
+	for (int i = 2; i <= Size(X); i++)
+		w = w+X[i].sup-X[i].inf;
+	return w;
+}
+//----------------------------------------------------------------------
+bool box::IsEmpty(void) const
+{
+	if (dim == 0) return true;
+	for (int i = 1; i <= dim; i++)
+	{
+		if ((*this)[i].isEmpty) return true;
+	}
+	return false;
+}
+//----------------------------------------------------------------------
+void box::Resize(int dim1)
+{
+	box X(dim1);
+	for (int k = 1; k <= dim1; k++)
+	{
+		X[k] = (*this)[k];
+		X[k].isEmpty = false;
+	}
+	delete[] data; (*this) = X;
+}
+//----------------------------------------------------------------------
 // Box-valued functions
 //----------------------------------------------------------------------
 box Inf(box X)
@@ -299,14 +349,6 @@ box Union(const box& X, const box& Y)
 	return Ans;
 }
 //----------------------------------------------------------------------
-box& box::Intersect(const box& Y)
-{
-	box X = *this;
-	box Z = Inter(X, Y);
-	*this = Z;
-	return *this;
-}
-//----------------------------------------------------------------------
 box Inflate(box& X, double eps)
 {
 	Update(X);
@@ -316,15 +358,6 @@ box Inflate(box& X, double eps)
 }
 //----------------------------------------------------------------------
 // Other functions
-//----------------------------------------------------------------------
-double box::Width(void)
-{
-	box X = *this;
-	int i = AxePrincipal(X);
-	interval Xi = X[i];
-	double w = Xi.sup - Xi.inf;
-	return (w);
-}
 //----------------------------------------------------------------------
 double Width(box& X) 
 {
@@ -360,26 +393,6 @@ double Marge(box X, box Y)
 	return ans;
 }
 //-----------------------------------------------------------------------
-double box::SumWidth(void)
-{  
-	box X = *this;
-	if (X.IsEmpty()) return -oo;
-	double w = X[1].sup-X[1].inf;
-	for (int i = 2; i <= Size(X); i++)
-		w = w+X[i].sup-X[i].inf;
-	return w;
-}
-//----------------------------------------------------------------------
-bool box::IsEmpty(void) const
-{
-	if (dim == 0) return true;
-	for (int i = 1; i <= dim; i++)
-	{
-		if ((*this)[i].isEmpty) return true;
-	}
-	return false;
-}
-//----------------------------------------------------------------------
 bool IsBox(box X)
 {
 	if (X.IsEmpty()) return false;
@@ -400,17 +413,6 @@ void Update(box& X)
 				X[j] = interval(); return;
 		}
 	}
-}
-//----------------------------------------------------------------------
-void box::Resize(int dim1)
-{
-	box X(dim1);
-	for (int k = 1; k <= dim1; k++)
-	{
-		X[k] = (*this)[k];
-		X[k].isEmpty = false;
-	}
-	delete[] data; (*this) = X;
 }
 //----------------------------------------------------------------------
 // Calcule l'angle entre 2 vecteur de dimension 2
@@ -743,7 +745,7 @@ void Cscal(interval& R, box& X, box& Y)
 	}
 }
 //----------------------------------------------------------------------
-void COrtho(box& X, box& Y)
+void Cortho(box& X, box& Y)
 {
 	interval S(0, 0);
 	Cscal(S, X, Y);
