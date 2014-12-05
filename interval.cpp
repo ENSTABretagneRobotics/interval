@@ -2579,13 +2579,13 @@ void diffI(interval &x0, interval &x1, interval &c0, interval &c1)
 	{
 		c0 = (x1.inf == x0.inf) ? interval() : interval(x1.inf,x0.inf);
 		c1 = (x0.sup == x1.sup) ? interval() : interval(x0.sup,x1.sup);
-		if (abs(c0.sup - c0.inf) < 1e-10) c0.isEmpty = true;
-		if (abs(c1.sup - c1.inf) < 1e-10) c1.isEmpty = true;
+		if (abs(c0.sup - c0.inf) < 1e-10) c0 = interval();
+		if (abs(c1.sup - c1.inf) < 1e-10) c1 = interval();
 	}
 	if (c0.isEmpty)
 	{
 		c0 = c1;
-		c1.isEmpty = true;
+		c1 = interval();
 	}
 }
 //----------------------------------------------------------------------

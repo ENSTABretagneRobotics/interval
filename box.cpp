@@ -189,7 +189,7 @@ bool box::IsEmpty(void) const
 	if (dim == 0) return true;
 	for (int i = 1; i <= dim; i++)
 	{
-		if ((*this)[i].isEmpty) return true;
+		if (((*this)[i].isEmpty)||((*this)[i].inf == NAN)||((*this)[i].sup == NAN)) return true;
 	}
 	return false;
 }
@@ -197,10 +197,13 @@ bool box::IsEmpty(void) const
 void box::Resize(int dim1)
 {
 	box X(dim1);
-	for (int k = 1; k <= dim1; k++)
+	for (int k = 1; k <= min(dim, dim1); k++)
 	{
 		X[k] = (*this)[k];
-		X[k].isEmpty = false;
+	}
+	for (int k = dim+1; k <= dim1; k++)
+	{
+		X[k] = interval(-oo,oo);
 	}
 	delete[] data; (*this) = X;
 }
@@ -580,7 +583,7 @@ bool Prop(box& X, box& Y)  // Normalement X is a subset of y (used in SIVEX)
 	if (X.IsEmpty()) return false;
 	if (Y.IsEmpty()) return false;
 	for (int k = 1; k <= Size(X); k++)
-		if ((X[k].inf == Y[k].inf) || (X[k].sup == Y[k].sup)) return (true);
+		if ((X[k].inf == Y[k].inf)||(X[k].sup == Y[k].sup)) return (true);
 	return false;
 }
 //----------------------------------------------------------------------
@@ -808,7 +811,7 @@ void BisectAlong(box& X, box& X1, box& X2, int i)
 	X1 = X2 = X; X1[i].sup = X2[i].inf = ((X[i].inf) + (1.01*X[i].sup)) / 2.01;
 }
 //----------------------------------------------------------------------
-void BisectHere(box& X, box& X1, box& X2, int i, double here) //Used by the 3-B consistency
+void BisectHere(box& X, box& X1, box& X2, int i, double here) // Used by the 3-B consistency
 {
 	X1 = X2 = X;
 	X1[i].sup = here;

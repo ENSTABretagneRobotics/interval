@@ -45,9 +45,9 @@ public:
 #ifdef QT_VERSION 
 	inline friend QDebug operator<<(QDebug os, const box&X)
 	{   
-		os.nospace() << "box :" << "\t dim=" << Size(X) << "\n";
+		os.nospace() << "box :" << "\t dim=" << X.dim << "\n";
 		if (X.IsEmpty()) os.nospace() << "EmptyBox";
-		for (int i = 1; i <= Size(X); i++)
+		for (int i = 1; i <= X.dim; i++)
 			os.nospace() << "  " << i << ": "<< X[i] << "\n";
 		return (os.space());
 	}
@@ -133,11 +133,11 @@ void C_q_in(box&, int, vector<box>&);
 //----------------------------------------------------------------------
 // Other
 //----------------------------------------------------------------------
-void Bisect(box&, box&, box&);
-void Bisect(box&, box&, box&, box&);
-void Bisect(box&, box&, box&, vector<int>&);
-void BisectAlong(box&, box&, box&, int);
-void BisectHere(box&, box&, box&, int, double);
+void Bisect(box& X, box& X1, box& X2);
+void Bisect(box& X, box& X1, box& X2, box& V);
+void Bisect(box& X, box& X1, box& X2, vector<int>& v);
+void BisectAlong(box& X, box& X1, box& X2, int i);
+void BisectHere(box& X, box& X1, box& X2, int i, double here);
 void Trisect(box&, box&, box&, box&);
 void TrisectAlong(box&, box&, box&, box&, int);
 void Decoup(box&, box&, box&);
