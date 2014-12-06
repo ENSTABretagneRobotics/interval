@@ -346,7 +346,6 @@ void CPoseInCircles(interval& mx, interval& my, interval& phi, vector<double> cx
 void CPoseInSegmentsOrCircles(interval& mx, interval& my, interval& malpha, 
 							  vector<double> ax, vector<double> ay, vector<double> bx, vector<double> by, 
 							  vector<double> cx, vector<double> cy, vector<double> r);
-
 void CPoseTrans(interval& qx, interval& qy, interval& d, interval& px, interval& py, interval& theta);  //Go straight
 void CPoseRotTrans(interval& qx, interval& qy, interval& beta, interval& phi, interval& d, interval& px, interval& py, interval& alpha);
 void CPoseTransInWallsOrCircles(interval& px, interval& py, interval& alpha, interval& d, 
@@ -370,7 +369,6 @@ void CPoseTransPointInWallsOrCircles(interval& px,interval& py, interval& alpha,
 									 vector<double> cx, vector<double> cy, vector<double> r, bool truth = true);
 void CPoseTowardSegment(interval& mx, interval& my, interval& theta, 
 						double& ax, double& ay, double& bx, double& by, bool truth = true);
-
 #define Ccroisepas Cnocross
 void Cnocross(interval& px, interval& py, interval& mx, interval& my, double& ax, double& ay, double& bx, double& by);
 #define CPatteCroiseAucunSegment CLegCrossNoSegment
@@ -381,7 +379,6 @@ void CLegOnWalls(interval& dist, interval& px, interval& py, interval& theta,
 void CLegOnWallsOrCircles(interval& dist, interval& px, interval& py, interval& theta, 
 						  vector<double> ax, vector<double> ay, vector<double> bx, vector<double> by, 
 						  vector<double> cx, vector<double> cy, vector<double> r);
-
 //------- Procedure de reduction elementaires sur les intervalles ----------
 void Contract0(char, interval&, interval&, int);
 //void Contract0 (char, interval&, interval&, int, int);
@@ -389,13 +386,10 @@ void Contract0(char, interval&, interval&, int);
 void Contract0(char, interval&, interval&, interval&, int);
 //void Contract0 (char, interval&, double&, interval&, int); //Luc
 void Contract0(char, interval&);
-//modifs???
 void ShowContraction(interval&, interval&, interval&, interval&);
 void IntButterfly(interval& Y, interval Yo, interval dY, interval& X, interval Xo, int sens);
-//modifs???
 void Inter1(interval&, interval&, const interval&, const interval&, const interval&);
 void Sucre(interval&, const interval&);
-
 void Cnotin(interval& X, interval& Y);
 void C_q_in(interval& x, int q, vector<interval>& y);
 //----------------------------------------------------------------------
