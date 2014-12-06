@@ -170,17 +170,17 @@ public:
 	friend bool operator==(const interval&, const interval&);
 	friend std::ostream& operator<<(std::ostream& os, const interval& a);
 #ifdef QT_VERSION 
-	//inline friend QDataStream& operator<<(QDataStream& s, const interval& i)
+	//friend QDataStream& operator<<(QDataStream& s, const interval& i)
 	//{
 	//	s << i.inf << i.sup << i.isEmpty;
 	//	return s;
 	//}
-	//inline friend QDataStream& operator>>(QDataStream& s, interval& i)
+	//friend QDataStream& operator>>(QDataStream& s, interval& i)
 	//{
 	//	s >> i.inf >> i.sup >> i.isEmpty;
 	//	return s;
 	//}
-	inline friend QDebug operator<<(QDebug os, const interval& a)
+	friend QDebug operator<<(QDebug os, const interval& a)
 	{
 		if (a.isEmpty) os.nospace() << "EmptyInterval";
 		else if (a.inf != a.sup)
