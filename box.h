@@ -40,7 +40,7 @@ public:
 	interval& operator[](int) const;
 	friend std::ostream& operator<<(std::ostream& os, const box& X);
 #ifdef QT_VERSION 
-	inline friend QDebug operator<<(QDebug os, const box&X)
+	friend QDebug operator<<(QDebug os, const box&X)
 	{   
 		os.nospace() << "box :" << "\t dim=" << X.dim << "\n";
 		if (X.IsEmpty()) os.nospace() << "EmptyBox";
