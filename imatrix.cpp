@@ -132,10 +132,11 @@ imatrix operator*(const double a, const imatrix& X)
 /*interval& imatrix::operator() (int i, int j)  const
 { 
 interval& I = data[j-1][i-1];
-return I;};*/
+return I;
+};*/
 interval imatrix::operator() (int i, int j) const
 { 
-	interval I = data[j-1][i-1];;
+	interval I = data[j-1][i-1];
 	return I;
 }
 //----------------------------------------------------------------------

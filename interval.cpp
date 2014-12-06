@@ -662,8 +662,8 @@ interval Det(interval& ux, interval& uy, double& vx, double& vy)
 interval Step(const interval& X)
 { 
 	if (X.isEmpty) return interval();
-	if (X.inf>0) return (interval(1));
-	if (X.sup<0) return (interval(0));
+	if (X.inf > 0) return (interval(1));
+	if (X.sup < 0) return (interval(0));
 	return (interval(0,1));
 }
 //----------------------------------------------------------------------
@@ -830,7 +830,7 @@ bool In(double a, const interval& b)
 {
 	interval z = Inflate(b, 1e-6);
 	if (b.isEmpty) return false;
-	return ((z.inf <= a) && (a <= z.sup));
+	return ((z.inf <= a)&&(a <= z.sup));
 }
 //----------------------------------------------------------------------
 // Contractors
@@ -1434,17 +1434,6 @@ void Cdet(interval& det, interval& ux, interval& uy, interval& vx, interval& vy,
 	Cmul(z1, ux, vy, -1);
 }
 //----------------------------------------------------------------------
-void Cdet(interval& det, interval& ux, interval& uy, double& vx, double& vy, int sens)
-{
-	interval z1 = vy*ux;
-	interval z2 = vx*uy;
-	Csub(det, z1, z2, -1);
-	if (sens == 1) return;
-	Csub(det, z1, z2, -1);
-	Cmul(z2, vx, uy, -1);
-	Cmul(z1, vy, ux, -1);
-}
-//----------------------------------------------------------------------
 void Cdet(interval& det, double& ux, double& uy, interval& vx, interval& vy, int sens)
 {
 	interval z1 = ux*vy;
@@ -1454,6 +1443,17 @@ void Cdet(interval& det, double& ux, double& uy, interval& vx, interval& vy, int
 	Csub(det, z1, z2, -1);
 	Cmul(z2, uy, vx, -1);
 	Cmul(z1, ux, vy, -1);
+}
+//----------------------------------------------------------------------
+void Cdet(interval& det, interval& ux, interval& uy, double& vx, double& vy, int sens)
+{
+	interval z1 = vy*ux;
+	interval z2 = vx*uy;
+	Csub(det, z1, z2, -1);
+	if (sens == 1) return;
+	Csub(det, z1, z2, -1);
+	Cmul(z2, vx, uy, -1);
+	Cmul(z1, vy, ux, -1);
 }
 //----------------------------------------------------------------------
 void Cstep(interval& Y, interval& X)
@@ -1513,7 +1513,8 @@ void Cramp(interval& Y, interval& X, int sens, double a)
 		interval Xd = Inter(X, interval(a, oo));
 		interval Xg = Inter(X, interval(-oo, a));
 		if (Y.isEmpty) Xg = Xd = interval();
-		else {
+		else 
+		{
 			Xd = Inter(Xd, Y);
 			if (Y.inf > 0) Xg = interval();
 		}
@@ -1537,9 +1538,11 @@ void Cheaviside(interval& Y, interval& X, int sens, double a)
 	{
 		interval U = Union(Z, W);
 		if (X.isEmpty) Y = X;
-		else {
+		else 
+		{
 			if (Z.isEmpty && W.isEmpty) Y = Z;
-			else {
+			else 
+			{
 				Y = Inter(Y, Union(Z, W));
 				if (X.inf >= a)  Y = Inter(Y, interval(1));
 				else if (X.sup < a) Y = Inter(Y, interval(0));
@@ -1617,12 +1620,12 @@ void CDistanceDirLine(interval& dist, interval& mx, interval& my, interval& thet
 	// la distance dist entre le point m=(mx,my) a la droite [a,b] suivant le vecteur u
 	if ((dist.isEmpty)||(mx.isEmpty)||(my.isEmpty)||(theta.isEmpty))
 	{  
-		dist.isEmpty=true; mx.isEmpty=true; my.isEmpty=true; theta.isEmpty=true; return;
+		dist = interval(); mx = interval(); my = interval(); theta = interval(); return;
 	}
-	interval ma_x=ax-mx;       interval ma_y=ay-my;
-	interval mb_x=bx-mx;       interval mb_y=by-my;
-	double ab_x=bx-ax;         double ab_y=by-ay;
-	interval ux=Cos(theta);    interval uy=Sin(theta);
+	interval ma_x=ax-mx; interval ma_y=ay-my;
+	interval mb_x=bx-mx; interval mb_y=by-my;
+	double ab_x=bx-ax; double ab_y=by-ay;
+	interval ux=Cos(theta); interval uy=Sin(theta);
 	interval z3=Det(ma_x,ma_y,ab_x,ab_y);
 	interval z4=Det(ux,uy,ab_x,ab_y);
 	dist=Inter(dist,z3/z4);
@@ -1630,9 +1633,9 @@ void CDistanceDirLine(interval& dist, interval& mx, interval& my, interval& thet
 	Cdiv(dist,z3,z4, -1);
 	Cdet(z4,ux,uy,ab_x,ab_y,-1);
 	Cdet(z3,ma_x,ma_y,ab_x,ab_y,-1);
-	Csin(uy,theta,-1);           Ccos(ux,theta,-1);
-	Csub(mb_y,by,my,-1);       Csub(mb_x,bx,mx,-1);
-	Csub(ma_y,ay,my,-1);       Csub(ma_x,ax,mx,-1);
+	Csin(uy,theta,-1); Ccos(ux,theta,-1);
+	Csub(mb_y,by,my,-1); Csub(mb_x,bx,mx,-1);
+	Csub(ma_y,ay,my,-1); Csub(ma_x,ax,mx,-1);
 }
 //----------------------------------------------------------------------
 int CDistanceDirSegment(interval& dist, interval& mx, interval& my, interval& theta, double ax, double ay, double bx, double by, int sens)
@@ -1640,8 +1643,8 @@ int CDistanceDirSegment(interval& dist, interval& mx, interval& my, interval& th
 	// la distance dist entre le point m=(mx,my) au segment [a,b] suivant le vecteur u
 	if ((dist.isEmpty)||(mx.isEmpty)||(my.isEmpty)||(theta.isEmpty))
 	{
-		dist.isEmpty = true; mx.isEmpty = true; my.isEmpty = true; theta.isEmpty = true; return -1;
-		//dist.isEmpty = true; mx.isEmpty = true; my.isEmpty = true; theta.isEmpty = true; return;
+		dist = interval(); mx = interval(); my = interval(); theta = interval(); return -1;
+		//dist = interval(); mx = interval(); my = interval(); theta = interval(); return;
 	}
 	interval ma_x = ax - mx; interval ma_y = ay - my;
 	interval mb_x = bx - mx; interval mb_y = by - my;
@@ -1691,15 +1694,17 @@ void CDistanceDirSegments(interval& distmin, interval& mx, interval& my, interva
 box P(3);   P[1]=mx;  P[2]=my;   P[3]=theta;
 
 vector<interval> dist(ax.size());
-for (int j=0;j<ax.size();j++)  dist[j]=interval(0,oo);
+for (int j=0;j<ax.size();j++) dist[j]=interval(0,oo);
 vector <box> L(ax.size());
 for (int j=0;j<ax.size();j++)
-{  L[j]=P;
+{  
+L[j]=P;
 CDistanceDirSegment(dist[j],P[1],P[2],P[3],ax[j],ay[j],bx[j],by[j],1);
 }
 //Cmin(distmin,dist,-1);
 for (int j=0;j<ax.size();j++)
-{  vector <interval> Y(ax.size());
+{  
+vector <interval> Y(ax.size());
 for (int j1=0;j1<ax.size();j1++)
 if (j1==j) Y[j1]=distmin;
 else Y[j1]=interval(distmin.inf,oo);
@@ -1742,7 +1747,7 @@ void CPointInSegment(interval& mx, interval& my, double ax, double ay, double bx
 void CPointInSegments(interval& mx, interval& my, vector<double> ax, vector<double> ay, vector<double> bx, vector<double> by)
 {      
 	// contracte relativement a la contrainte : "m appartient au polygone dont les segments sont les [ai,bi]"
-	if (ax.size() == 0) return;
+	if ((ax.size() == 0)||(ay.size() == 0)||(bx.size() == 0)||(by.size() == 0)) return;
 	vector<interval> Mx(ax.size());
 	vector<interval> My(ax.size());
 	for (unsigned int j = 0; j < ax.size(); j++)
@@ -1776,14 +1781,14 @@ void CPointInCircle(interval& mx, interval& my, double cx, double cy, double r)
 void CPointInCircles(interval& mx, interval& my, vector<double> cx, vector<double> cy, vector<double> r, bool truth)
 {      
 	// contracte relativement a la contrainte : "m appartient a un des cercles de centre ci et de rayon ri"
-	if (cx.size() == 0) return;
+	if ((cx.size() == 0)||(cy.size() == 0)||(r.size() == 0)) return;
 	vector<interval> Mx(cx.size());
 	vector<interval> My(cx.size());
 	for (unsigned int j = 0; j < cx.size(); j++)
 	{
 		interval mx0 = mx;
 		interval my0 = my;
-		CinCircle(mx0, my0, cx[j], cy[j], r[j]);
+		CPointInCircle(mx0, my0, cx[j], cy[j], r[j]);
 		Mx[j] = mx0;
 		My[j] = my0;
 	}
@@ -1860,7 +1865,7 @@ void CPointOutsideSegment(interval& mx, interval& my, double& ax, double& ay, do
 //----------------------------------------------------------------------
 void CPointOutsideSegments(interval& mx, interval& my, vector<double> ax, vector<double> ay, vector<double> bx, vector<double> by, bool outer)
 { 
-	if (ax.size() == 0) return;
+	if ((ax.size() == 0)||(ay.size() == 0)||(bx.size() == 0)||(by.size() == 0)) return;
 	// contracte relativement a la contrainte : "m appartient au polygone dont les segments sont les [ai,bi]"
 	vector<interval> Mx(ax.size());
 	vector<interval> My(ax.size());
@@ -1897,12 +1902,12 @@ void CPoseInSegment(interval& mx, interval& my, interval& phi, double& ax, doubl
 	Cdet(det,cphi,sphi,ab_x,ab_y);   // select the right direction
 	Ccos(cphi,phi,-1);
 	Csin(sphi,phi,-1);
-	if ((mx.isEmpty)||(my.isEmpty)||(phi.isEmpty)) { mx.isEmpty=true; my.isEmpty=true;phi.isEmpty=true; }
+	if ((mx.isEmpty)||(my.isEmpty)||(phi.isEmpty)) { mx = interval(); my = interval(); phi = interval(); }
 }
 //----------------------------------------------------------------------
 void CPoseInSegments(interval& mx, interval& my, interval& phi,vector<double> ax, vector<double> ay, vector<double> bx, vector<double> by)
 {
-	if (ax.size() == 0) return;	
+	if ((ax.size() == 0)||(ay.size() == 0)||(bx.size() == 0)||(by.size() == 0)) return;
 	vector<interval> Mx(ax.size());
 	vector<interval> My(ax.size());
 	vector<interval> Mphi(ax.size());
@@ -1933,12 +1938,12 @@ void CPoseInCircle(interval& mx, interval& my, interval& phi, double& cx, double
 	Cdet(det,cphi,sphi,mc_x,mc_y);   //det(cphi,sphi,cx_mx,cy-my)=0
 	Ccos(cphi,phi,-1);
 	Csin(sphi,phi,-1);
-	if ((mx.isEmpty)||(my.isEmpty)||(phi.isEmpty)) { mx.isEmpty=true; my.isEmpty=true;phi.isEmpty=true; }
+	if ((mx.isEmpty)||(my.isEmpty)||(phi.isEmpty)) { mx = interval(); my = interval(); phi = interval(); }
 }
 //----------------------------------------------------------------------
 void CPoseInCircles(interval& mx, interval& my, interval& phi,vector<double> cx, vector<double> cy, vector<double> r)
 { 
-	if (cx.size() == 0) return;	
+	if ((cx.size() == 0)||(cy.size() == 0)||(r.size() == 0)) return;
 	vector<interval> Mx(cx.size());
 	vector<interval> My(cx.size());
 	vector<interval> Mphi(cx.size());
@@ -1996,7 +2001,7 @@ void CPoseTrans(interval& qx,interval& qy,interval& dist, interval& px, interval
 	Cmul(dx,ux,dist,-1); // Plante ici car dx est negatif et d > 0 et ux > 0?
 	Csin(uy,alpha,-1);
 	Ccos(ux,alpha,-1);
-	if ((qx.isEmpty)||(qy.isEmpty)||(alpha.isEmpty))  {qx.isEmpty=true; qy.isEmpty=true;alpha.isEmpty=true;};
+	if ((qx.isEmpty)||(qy.isEmpty)||(alpha.isEmpty)) { qx = interval(); qy = interval(); alpha = interval(); }
 }
 //----------------------------------------------------------------------
 void CPoseTransRot(interval& qx,interval& qy,interval& beta,interval& d, interval& psi, interval& px,interval& py,interval& alpha)
@@ -2177,7 +2182,7 @@ void CPoseTowardSegment(interval& mx, interval& my, interval& theta, double& ax,
 	// La pose m=(mx,my,theta) pointe sur le segment [a,b]
 	if ((mx.isEmpty)||(my.isEmpty)||(theta.isEmpty))
 	{ 
-		mx.isEmpty=true; my.isEmpty=true; theta.isEmpty=true; return;
+		mx = interval(); my = interval(); theta = interval(); return;
 	}
 	interval ma_x=ax-mx;       interval ma_y=ay-my;
 	interval mb_x=bx-mx;       interval mb_y=by-my;
@@ -2250,13 +2255,14 @@ void Cnocross(interval& px, interval& py, interval& mx, interval& my, double& ax
 	Csub(ma_x,ax,mx,-1);
 	if ((mx.isEmpty)||(my.isEmpty)||(px.isEmpty)||(py.isEmpty))
 	{  
-		mx.isEmpty=true; my.isEmpty=true; px.isEmpty=true; py.isEmpty=true; 
+		mx = interval(); my = interval(); px = interval(); py = interval(); 
 	}
 }
 //----------------------------------------------------------------------
 void CLegCrossNoSegment(interval& dist, interval& px, interval& py, interval& theta, vector<double> ax, vector<double> ay, vector<double> bx, vector<double> by)
 {      
 	// Aucun segment ne doit être croise
+	if ((ax.size() == 0)||(ay.size() == 0)||(bx.size() == 0)||(by.size() == 0)) return;
 	interval ux=Cos(theta);
 	interval uy=Sin(theta);
 	interval dx=ux*dist;
@@ -2278,13 +2284,14 @@ void CLegCrossNoSegment(interval& dist, interval& px, interval& py, interval& th
 void CLegOnWalls(interval& dist, interval& px, interval& py, interval& theta, vector<double> ax, vector<double> ay, vector<double> bx, vector<double> by)
 {      
 	// Toutes les pattes doivent être sur le mur
+	if ((ax.size() == 0)||(ay.size() == 0)||(bx.size() == 0)||(by.size() == 0)) return;
 	interval ux = Cos(theta);
 	interval uy = Sin(theta);
 	interval dx = ux*dist;
 	interval dy = uy*dist;
 	interval leg_x = px + dx;
 	interval leg_y = py + dy;
-	CinSegments(leg_x, leg_y, ax, ay, bx, by);
+	CPointInSegments(leg_x, leg_y, ax, ay, bx, by);
 	Cadd(leg_y, py, dy, -1);
 	Cadd(leg_x, px, dx, -1);
 	Cmul(dy, uy, dist, -1);
@@ -2302,7 +2309,7 @@ void CLegOnWallsOrCircles(interval& dist, interval& px, interval& py, interval& 
 	interval dy = uy*dist;
 	interval leg_x = px + dx;
 	interval leg_y = py + dy;
-	CinSegmentsOrCircles(leg_x, leg_y, ax, ay, bx, by, cx, cy, r);
+	CPointInSegmentsOrCircles(leg_x, leg_y, ax, ay, bx, by, cx, cy, r);
 	Cadd(leg_y, py, dy, -1);
 	Cadd(leg_x, px, dx, -1);
 	Cmul(dy, uy, dist, -1);
@@ -2388,7 +2395,6 @@ void Contract0(char code, interval& Z, interval& Y, interval& X, int sens)
 	if (code == 'M')    { Cmax(Z, Y, X, sens);     return; }
 }
 //----------------------------------------------------------------------
-//modifs???
 void ShowContraction(interval& Xcd, interval& Xcg, interval& X, interval& Xc)
 {
 	if (Xc.isEmpty) { Xcd = Xcg = Xc; return; }
@@ -2396,7 +2402,6 @@ void ShowContraction(interval& Xcd, interval& Xcg, interval& X, interval& Xc)
 	Xcg = interval(Xc.sup, X.sup);
 }
 //----------------------------------------------------------------------
-//modifs???
 void IntButterfly(interval& Y, interval Yo, interval dY, interval& X, interval Xo, int sens)
 {
 	UNREFERENCED_PARAMETER(sens);
@@ -2414,7 +2419,8 @@ void IntButterfly(interval& Y, interval Yo, interval dY, interval& X, interval X
 }
 //----------------------------------------------------------------------
 void Inter1(interval& r0, interval& r1, const interval &a, const interval &b, const interval &c)
-{   //interval r(-oo);
+{   
+	//interval r(-oo);
 	if (a.isEmpty) { r0 = a; r1 = Inter(b, c); return; };
 	if (b.isEmpty) { r0 = b; r1 = Inter(a, c); return; };
 	if (c.isEmpty) { r0 = c; r1 = Inter(a, b); return; };
@@ -2423,14 +2429,14 @@ void Inter1(interval& r0, interval& r1, const interval &a, const interval &b, co
 	//Max1(zmax0,zmax1,Sup(a),Sup(b),Sup(c));
 	Max1(zmin0, zmin1, a.inf, b.inf, c.inf);
 	Min1(zmax0, zmax1, a.sup, b.sup, c.sup);
-	if (zmin0 > zmax0)  r0.isEmpty = true; else r0 = interval(zmin1, zmax1);
-	if (zmin1 > zmax1)  r1.isEmpty = true; else r1 = interval(zmin1, zmax1);
+	if (zmin0 > zmax0) r0 = interval(); else r0 = interval(zmin1, zmax1);
+	if (zmin1 > zmax1) r1 = interval(); else r1 = interval(zmin1, zmax1);
 	return;
 }
 //----------------------------------------------------------------------
 void Sucre(interval& P, const interval& S)
 {
-	if (Disjoint(P, S) || Subset(S, P) || Subset(P, S)) return;
+	if (Disjoint(P, S)||Subset(S, P)||Subset(P, S)) return;
 	if (In(S.inf, P)) { P.sup = S.inf; return; }
 	if (In(S.sup, P)) { P.inf = S.sup; return; }
 }
@@ -2591,7 +2597,7 @@ void diffI(interval &x0, interval &x1, interval &c0, interval &c1)
 //----------------------------------------------------------------------
 iboolean TestDiskExists(const interval& X,const interval& Y,const interval& P1,const interval& P2,const interval& P3)
 {
-	// Test for the constraint :  Exists p1 in P1, p2  in P2, (x-p1)^2+(y-p2)^2 in P3
+	// Test for the constraint : Exists p1 in P1, p2  in P2, (x-p1)^2+(y-p2)^2 in P3
 	interval A1=X-P1.inf;
 	interval B1=X-P1.sup;
 	interval A2=Y-P2.inf;
@@ -2607,7 +2613,7 @@ iboolean TestDiskExists(const interval& X,const interval& Y,const interval& P1,c
 //----------------------------------------------------------------------
 iboolean TestDiskForall(const interval& X,const interval& Y,const interval& P1,const interval& P2,const interval& P3)
 {   
-	// Test for the constraint :  For all p1 in P1, p2  in P2, (x1-p1)^2+(x2-p2)^2 in P3
+	// Test for the constraint : For all p1 in P1, p2  in P2, (x1-p1)^2+(x2-p2)^2 in P3
 	iboolean dedans1,dedans2;
 	interval A1=X-P1.inf;
 	interval B1=X-P1.sup;
