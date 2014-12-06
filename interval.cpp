@@ -755,6 +755,12 @@ double Width(const interval& a)
 	else return (a.sup - a.inf);
 }
 //----------------------------------------------------------------------
+double Rad(const interval& a)
+{
+	if (a.isEmpty) return (-1);
+	else return (a.sup - a.inf)/2.0;
+}
+//----------------------------------------------------------------------
 double Marge(const interval& a, const interval& b)
 {
 	return min(a.inf - b.inf, b.sup - a.sup);
