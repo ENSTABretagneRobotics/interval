@@ -306,6 +306,8 @@ int CAngle(interval& X2, interval& Y2, interval& Theta, interval& X1, interval& 
 #define CNorm Cnorm
 void Cnorm(interval& N, interval& X, interval& Y);
 void Cnorm(interval& N, interval& X, interval& Y, interval& Z, int sens = 0);
+#define Cdistance Cdist
+void Cdist(interval& R, interval& X1, interval& Y1, interval& X2, interval& Y2);
 #define CScal Cscal
 void Cscal(interval& s, interval& ux, interval& uy, interval& vx, interval& vy);
 void Cscal(interval& s, double& ux, double& uy, interval& vx, interval& vy);

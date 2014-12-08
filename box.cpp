@@ -713,7 +713,7 @@ void Cnorm(interval& R, box& X)
 	}
 }
 //----------------------------------------------------------------------
-void Cdistance(interval& R, box& X, box& Y)
+void Cdist(interval& R, box& X, box& Y)
 {
 	box Z = Y - X;
 	Cnorm(R, Z);

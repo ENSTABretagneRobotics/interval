@@ -1411,6 +1411,13 @@ void Cnorm(interval& N, interval& X, interval& Y, interval& Z, int sens)
 	}
 }
 //----------------------------------------------------------------------
+void Cdist(interval& R, interval& X1, interval& Y1, interval& X2, interval& Y2)
+{
+	interval deltaX = X2 - X1; interval deltaY = Y2 - Y1;
+	Cnorm(R, deltaX, deltaY);
+	Csub(deltaX, X2, X1, -1); Csub(deltaY, Y2, Y1, -1);
+}
+//----------------------------------------------------------------------
 void Cscal(interval& s, interval& ux, interval& uy, interval& vx, interval& vy)
 {
 	interval z1 = ux*vx;

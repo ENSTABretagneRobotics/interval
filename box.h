@@ -120,7 +120,8 @@ void Csub(box& Z, box& X, box& Y, int sens = 0);
 #define CProd Cmul
 void Cmul(box& Y, interval& a, box& X, int sens = 0);
 void Cnorm(interval& R, box& X);
-void Cdistance(interval& R, box& X, box& Y);
+#define Cdistance Cdist
+void Cdist(interval& R, box& X, box& Y);
 #define CProdScalaire Cscal
 void Cscal(interval& R, box& X, box& Y);
 #define COrtho Cortho
