@@ -259,73 +259,73 @@ bool In(double, const interval&);
 // Contractors
 //----------------------------------------------------------------------
 #define Cplus Cadd
-void Cadd(interval& Z, interval& X, interval& Y, int sens = 0);
-void Cadd(interval& Z, double x, interval& Y, int sens = 0);
-void Cadd(interval& Z, interval& X, double y, int sens = 0);
-void Cadd(double z, interval& X, interval& Y, int sens = 0);
+void Cadd(interval& Z, interval& X, interval& Y, int dir = 0);
+void Cadd(interval& Z, double x, interval& Y, int dir = 0);
+void Cadd(interval& Z, interval& X, double y, int dir = 0);
+void Cadd(double z, interval& X, interval& Y, int dir = 0);
 #define Cmoins Csub
-void Csub(interval& Z, interval& X, interval& Y, int sens = 0);
-void Csub(interval& Z, double x, interval& Y, int sens = 0);
-void Csub(interval& Z, interval& X, double y, int sens = 0);
-void Csub(double z, interval& X, interval& Y, int sens = 0);
-void Csub(interval& Y, interval& X, int sens = 0);
+void Csub(interval& Z, interval& X, interval& Y, int dir = 0);
+void Csub(interval& Z, double x, interval& Y, int dir = 0);
+void Csub(interval& Z, interval& X, double y, int dir = 0);
+void Csub(double z, interval& X, interval& Y, int dir = 0);
+void Csub(interval& Y, interval& X, int dir = 0);
 #define Cprod Cmul
-void Cmul(interval& Z, interval& X, interval& Y, int sens = 0);
-void Cmul(interval& Z, double x, interval& Y, int sens = 0);
-void Cmul(interval& Z, interval& X, double y, int sens = 0);
-void Cdiv(interval& Z, interval& X, interval& Y, int sens = 0);
+void Cmul(interval& Z, interval& X, interval& Y, int dir = 0);
+void Cmul(interval& Z, double x, interval& Y, int dir = 0);
+void Cmul(interval& Z, interval& X, double y, int dir = 0);
+void Cdiv(interval& Z, interval& X, interval& Y, int dir = 0);
 #define Cegal Cequal
-void Cequal(interval& Y, interval& X, int sens);
+void Cequal(interval& Y, interval& X, int dir);
 void Cequal(interval& Y, interval& X);
-void Cmin(interval& a, interval& b, interval& c, int sens = 0);
-void Cmin(interval& a, interval& b, interval& c, interval& d, int sens = 0);
-void Cmin(interval& a, interval& b, interval& c, interval& d, interval& e, int sens = 0);
-int Cmin(interval& a, std::vector<interval>& x, int sens = 0);
-void Cmax(interval& a, interval& b, interval& c, int sens = 0);
-void Cabs(interval& Y, interval& X, int sens = 0);
+void Cmin(interval& a, interval& b, interval& c, int dir = 0);
+void Cmin(interval& a, interval& b, interval& c, interval& d, int dir = 0);
+void Cmin(interval& a, interval& b, interval& c, interval& d, interval& e, int dir = 0);
+int Cmin(interval& a, std::vector<interval>& x, int dir = 0);
+void Cmax(interval& a, interval& b, interval& c, int dir = 0);
+void Cabs(interval& Y, interval& X, int dir = 0);
 #define Csame_sign Csign
 void Csign(interval& Y, interval& X);
-void Csign(interval& Y, interval& X, int sens, double a = 0);
+void Csign(interval& Y, interval& X, int dir, double a = 0);
 void Cchi(interval& F, interval& A, interval& B, interval& C);
 void Cgeq(interval& Y, interval& X);
 void Cinteger(interval&);
 void Cboolean(interval&);
-void Csqr(interval& Y, interval& X, int sens = 0);
-void Csqrt(interval& Y, interval& X, int sens = 0);
-void Cexp(interval& Y, interval& X, int sens = 0);
-void Clog(interval& Y, interval& X, int sens = 0);
+void Csqr(interval& Y, interval& X, int dir = 0);
+void Csqrt(interval& Y, interval& X, int dir = 0);
+void Cexp(interval& Y, interval& X, int dir = 0);
+void Clog(interval& Y, interval& X, int dir = 0);
 #define Cpower Cpow
-void Cpow(interval& Y, interval& X, int n, int sens = 0);
-void Ccos(interval& Y, interval& X, int sens = 0);
-void Csin(interval& Y, interval& X, int sens = 0);
-void Ctan(interval& Y, interval& X, int sens = 0);
-void Catan(interval& Y, interval& X, int sens = 0);
-void Csinc(interval& Y, interval& X, int sens = 0);
+void Cpow(interval& Y, interval& X, int n, int dir = 0);
+void Ccos(interval& Y, interval& X, int dir = 0);
+void Csin(interval& Y, interval& X, int dir = 0);
+void Ctan(interval& Y, interval& X, int dir = 0);
+void Catan(interval& Y, interval& X, int dir = 0);
+void Csinc(interval& Y, interval& X, int dir = 0);
 //Carg (different from CAngle, with less parameters...)?
 int CAngle(interval& X2, interval& Y2, interval& Theta, interval& X1, interval& Y1, bool StrongAngle); // Deprecated.
 #define CNorm Cnorm
 void Cnorm(interval& N, interval& X, interval& Y);
-void Cnorm(interval& N, interval& X, interval& Y, interval& Z, int sens = 0);
+void Cnorm(interval& N, interval& X, interval& Y, interval& Z, int dir = 0);
 #define Cdistance Cdist
 void Cdist(interval& R, interval& X1, interval& Y1, interval& X2, interval& Y2);
 #define CScal Cscal
 void Cscal(interval& s, interval& ux, interval& uy, interval& vx, interval& vy);
 void Cscal(interval& s, double& ux, double& uy, interval& vx, interval& vy);
 #define CDet Cdet
-void Cdet(interval& det, interval& ux, interval& uy, interval& vx, interval& vy, int sens = 0);
-void Cdet(interval& det, double& ux, double& uy, interval& vx, interval& vy, int sens = 0);
-void Cdet(interval& det, interval& ux, interval& uy, double& vx, double& vy, int sens = 0);
+void Cdet(interval& det, interval& ux, interval& uy, interval& vx, interval& vy, int dir = 0);
+void Cdet(interval& det, double& ux, double& uy, interval& vx, interval& vy, int dir = 0);
+void Cdet(interval& det, interval& ux, interval& uy, double& vx, double& vy, int dir = 0);
 void Cstep(interval& Y, interval& X);
-void Cstep(interval& Y, interval& X, int sens, double a = 0);
-void Cramp(interval& Y, interval& X, int sens = 0, double a = 0);
-void Cheaviside(interval& Y, interval& X, int sens = 0, double a = 0);
-void Crect(interval& Z, interval& X, interval& Y, int sens = 0);
-void Crect(interval& Y, interval& X, int sens = 0);
-void Ctriangle(interval& Y, interval& X, int sens = 0);
+void Cstep(interval& Y, interval& X, int dir, double a = 0);
+void Cramp(interval& Y, interval& X, int dir = 0, double a = 0);
+void Cheaviside(interval& Y, interval& X, int dir = 0, double a = 0);
+void Crect(interval& Z, interval& X, interval& Y, int dir = 0);
+void Crect(interval& Y, interval& X, int dir = 0);
+void Ctriangle(interval& Y, interval& X, int dir = 0);
 void CDistanceDirLine(interval& dist, interval& mx, interval& my, interval& theta, 
 					  double& ax, double& ay, double& bx, double& by);
 int CDistanceDirSegment(interval& dist, interval& mx, interval& my, interval& theta, 
-						double ax, double ay, double bx, double by, int sens = 0);
+						double ax, double ay, double bx, double by, int dir = 0);
 void CDistanceDirSegments(interval& distmin, interval& mx, interval& my, interval& theta, 
 						  std::vector<double> ax, std::vector<double> ay, std::vector<double> bx, std::vector<double> by);
 void CPointInLine(interval& mx, interval& my, double& ax, double& ay, double& bx, double& by);
@@ -394,7 +394,7 @@ void Contract0(char, interval&, interval&, interval&, int);
 //void Contract0 (char, interval&, double&, interval&, int); //Luc
 void Contract0(char, interval&);
 void ShowContraction(interval&, interval&, interval&, interval&);
-void IntButterfly(interval& Y, interval Yo, interval dY, interval& X, interval Xo, int sens);
+void IntButterfly(interval& Y, interval Yo, interval dY, interval& X, interval Xo, int dir);
 void Inter1(interval&, interval&, const interval&, const interval&, const interval&);
 void Sucre(interval&, const interval&);
 void Cnotin(interval& X, interval& Y);

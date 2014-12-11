@@ -666,22 +666,22 @@ double decrease(const box& X, const box& Y, vector<int> Tab)
 //----------------------------------------------------------------------
 // Contractors
 //----------------------------------------------------------------------
-void Cadd(box& Z, box& X, box& Y, int sens)
+void Cadd(box& Z, box& X, box& Y, int dir)
 {
 	for (int k = 1; k <= Size(X); k++)
-		Cadd(Z[k], X[k], Y[k], sens);
+		Cadd(Z[k], X[k], Y[k], dir);
 }
 //----------------------------------------------------------------------
-void Csub(box& Z, box& X, box& Y, int sens)
+void Csub(box& Z, box& X, box& Y, int dir)
 {
 	for (int k = 1; k <= Size(X); k++)
-		Csub(Z[k], X[k], Y[k], sens);
+		Csub(Z[k], X[k], Y[k], dir);
 }
 //----------------------------------------------------------------------
-void Cmul(box& Y, interval& a, box& X, int sens)
+void Cmul(box& Y, interval& a, box& X, int dir)
 {
 	for (int k = 1; k <= Size(X); k++)
-		Cmul(Y[k], a, X[k], sens);
+		Cmul(Y[k], a, X[k], dir);
 }
 //----------------------------------------------------------------------
 void Cnorm(interval& R, box& X)

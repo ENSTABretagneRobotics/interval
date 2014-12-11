@@ -115,10 +115,10 @@ double decrease(const box&, const box&, std::vector<int>);
 //----------------------------------------------------------------------
 // Contractors
 //----------------------------------------------------------------------
-void Cadd(box& Z, box& X, box& Y, int sens = 0);
-void Csub(box& Z, box& X, box& Y, int sens = 0);
+void Cadd(box& Z, box& X, box& Y, int dir = 0);
+void Csub(box& Z, box& X, box& Y, int dir = 0);
 #define CProd Cmul
-void Cmul(box& Y, interval& a, box& X, int sens = 0);
+void Cmul(box& Y, interval& a, box& X, int dir = 0);
 void Cnorm(interval& R, box& X);
 #define Cdistance Cdist
 void Cdist(interval& R, box& X, box& Y);
