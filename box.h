@@ -78,38 +78,38 @@ box Inter(const box&, const box&);
 box Inter(std::vector<box>&);
 box Union(const box&, const box&);
 box Union(std::vector<box>&);
-box Inflate(box&, double);
+box Inflate(const box&, double);
 //----------------------------------------------------------------------
 // Other functions
 //----------------------------------------------------------------------
-double Width(box&);
-double Width(box&, std::vector<int>&);
-double Width(box&, box&);
 int Size(const box&);
-double Volume(box&);
-double Marge(box, box);
-bool IsBox(box);
-void Update(box&);
-double Angle(box&, box&); // Il faut des vecteurs de dim 2
-interval Norm(box);
-interval NormEuclid(box, box);
-interval NormInf(box, box);
-interval ProduitScalaire(box&, box&);
+double Width(const box&);
+double Width(const box&, std::vector<int>&);
+double Width(const box&, const box&);
+double Volume(const box&);
+double Marge(const box&, const box&);
+bool IsBox(const box&);
+void Update(const box&);
+double Angle(const box&, const box&); // Il faut des vecteurs de dim 2
+interval Norm(const box&);
+interval NormEuclid(const box&, const box&);
+interval NormInf(const box&, const box&);
+#define ProduitScalaire Scal
+interval Scal(const box&, const box&);
 #define Determinant Det
-interval Det(box&, box&);
-double Eloignement(box&, box&);
-double Eloignement2(box&, box&);
-double EloignementRelatif2(box&, box&);
+interval Det(const box&, const box&);
+double Eloignement(const box&, const box&);
+double Eloignement2(const box&, const box&);
+double EloignementRelatif2(const box&, const box&);
 bool Disjoint(const box&, const box&);
-bool Subset(box&, box&);
-bool Subset(box& X, box& Y, double epsilon);
-bool SubsetStrict(box&, box&);
-iboolean In(box, box);
-//void Inter1(box&,box&,const box&,const box&,const box&);
-bool Prop(box&, box&);
-int AxePrincipal(box&);
-int AxePrincipal(box&, box&);
-int AxePrincipal(box&, std::vector<int>&);
+bool Subset(const box&, const box&);
+bool Subset(const box& X, const box& Y, double epsilon);
+bool SubsetStrict(const box&, const box&);
+iboolean In(const box&, const box&);
+bool Prop(const box&, const box&);
+int AxePrincipal(const box&);
+int AxePrincipal(const box&, const box&);
+int AxePrincipal(const box&, std::vector<int>&);
 double decrease(const box&, const box&);
 double decrease(const box&, const box&, std::vector<int>);
 //----------------------------------------------------------------------

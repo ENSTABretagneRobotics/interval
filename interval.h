@@ -240,6 +240,7 @@ double Inf(const interval&);
 double Sup(const interval&);
 double Center(const interval&);
 double Width(const interval&);
+double Volume(const interval&);
 double Rad(const interval&);
 double Marge(const interval&, const interval&);
 #define ToReel ToReal
