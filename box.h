@@ -125,8 +125,8 @@ void Cdist(interval& R, box& X, box& Y);
 #define CProdScalaire Cscal
 void Cscal(interval& R, box& X, box& Y);
 #define COrtho Cortho
-void Cortho(box& X, box& Y);
-void Cnotin(box& X, const box& Y);
+void Cortho(box& X, box& Y, int dir = 0);
+void Cnotin(box& X, box& Y, int dir = 0);
 void C_q_in(box&, int, std::vector<box>&);
 //----------------------------------------------------------------------
 // Other

@@ -2460,16 +2460,18 @@ void Sucre(interval& P, const interval& S)
 	if (In(S.sup, P)) { P.inf = S.sup; return; }
 }
 //----------------------------------------------------------------------
-//void Cnotin(interval& X, const interval& Y)
-//{   
+//void Cnotin(interval& X, const interval& Y, int dir)
+//{  
+//	UNREFERENCED_PARAMETER(dir);
 //	if (Y.isEmpty) return;
 //	interval X1 = Inter(X, interval(-oo,Y.inf));
 //    interval X2 = Inter(X, interval(Y.sup,+oo));
 //    X = Inter(X, Union(X1,X2));
 //}
 //----------------------------------------------------------------------
-void Cnotin(interval& X, interval& Y)
+void Cnotin(interval& X, interval& Y, int dir)
 { 
+	UNREFERENCED_PARAMETER(dir);
 	if ((X.isEmpty)||(Y.isEmpty)) return;
 	else
 	{

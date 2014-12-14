@@ -398,7 +398,7 @@ void ShowContraction(interval&, interval&, interval&, interval&);
 void IntButterfly(interval& Y, interval Yo, interval dY, interval& X, interval Xo, int dir);
 void Inter1(interval&, interval&, const interval&, const interval&, const interval&);
 void Sucre(interval&, const interval&);
-void Cnotin(interval& X, interval& Y);
+void Cnotin(interval& X, interval& Y, int dir = 0);
 void C_q_in(interval& x, int q, std::vector<interval>& y);
 //----------------------------------------------------------------------
 // Other

@@ -741,15 +741,17 @@ void Cscal(interval& R, box& X, box& Y)
 	}
 }
 //----------------------------------------------------------------------
-void Cortho(box& X, box& Y)
+void Cortho(box& X, box& Y, int dir)
 {
+	UNREFERENCED_PARAMETER(dir);
 	interval S(0, 0);
 	Cscal(S, X, Y);
 }
 //----------------------------------------------------------------------
-void Cnotin(box& X, const box& Y)
+void Cnotin(box& X, box& Y, int dir)
 {
 	int notindim = -1;
+	UNREFERENCED_PARAMETER(dir);
 	if (Y.IsEmpty()) return;
 	if (X.IsEmpty()||(In(X, Y) == itrue))
 	{
