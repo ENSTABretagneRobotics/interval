@@ -62,8 +62,8 @@ public:
 //----------------------------------------------------------------------
 // Box-valued functions
 //----------------------------------------------------------------------
-box Inf(box);
-box Sup(box);
+box Inf(const box&);
+box Sup(const box&);
 box Center(const box&);
 box Center(const box&, std::vector<int>&);
 box Zeros(int);
@@ -127,7 +127,7 @@ void Cscal(interval& R, box& X, box& Y);
 #define COrtho Cortho
 void Cortho(box& X, box& Y, int dir = 0);
 void Cnotin(box& X, box& Y, int dir = 0);
-void C_q_in(box&, int, std::vector<box>&);
+void C_q_in(box& x, int q, std::vector<box>& yj);
 //----------------------------------------------------------------------
 // Other
 //----------------------------------------------------------------------

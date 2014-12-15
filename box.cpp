@@ -210,14 +210,14 @@ void box::Resize(int dim1)
 //----------------------------------------------------------------------
 // Box-valued functions
 //----------------------------------------------------------------------
-box Inf(box X)
+box Inf(const box& X)
 {
 	box Ans(Size(X));
 	for (int k = 1; k <= Size(Ans); k++) Ans[k] = X[k].inf;
 	return Ans;
 }
 //----------------------------------------------------------------------
-box Sup(box X)
+box Sup(const box& X)
 {
 	box Ans(Size(X));
 	for (int k = 1; k <= Size(Ans); k++) Ans[k] = X[k].sup;
