@@ -480,7 +480,7 @@ double Eloignement(const box& X, const box& Y)
 	for (int k = 1; k <= Size(X); k++) { e = max(e, Eloignement(X[k], Y[k])); }
 	return e;
 }
-//------------------------------------------------------------------------------
+//----------------------------------------------------------------------
 double Eloignement2(const box& X, const box& Y)
 {
 	// prend le point X1 de X qui est le plus eloigne de [Y] et renvoie la
@@ -501,7 +501,7 @@ double Eloignement2(const box& X, const box& Y)
 	}
 	return e;
 }
-//------------------------------------------------------------------------------
+//----------------------------------------------------------------------
 double EloignementRelatif2(const box& X, const box& Y)
 {
 	// prend le point X1 de X qui est le plus eloigne de [Y] et renvoie la
@@ -570,7 +570,7 @@ iboolean In(const box& X, const box& Y)
 	}
 	return r;
 }
-//------------------------------------------------------------------------------
+//----------------------------------------------------------------------
 bool Prop(const box& X, const box& Y)  // Normalement X is a subset of y (used in SIVEX)
 {
 	if (X.IsEmpty()) return false;
