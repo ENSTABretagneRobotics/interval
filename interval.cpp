@@ -1348,6 +1348,25 @@ void Csinc(interval& Y, interval& X, int dir)
 	if (dir != 1) { Cdiv(Y, Z, X, -1); Csin(Z, X, -1); }
 }
 //----------------------------------------------------------------------
+void Carg(interval& A, interval& X, interval& Y, int dir)
+{
+	// A=arg(X,Y)                  =>  dir=1;
+	// Y=X*tan(A);X=Y/tan(A);      =>  dir=-1; 
+	if (dir != -1) 
+	{
+		//A.Intersect(Arg(X,Y));
+		interval D = Sqrt(Sqr(X)+Sqr(Y)), y_x = Y/X, x_d = X/D, y_d = Y/D;
+		Ctan(y_x, A, -1); Ccos(x_d, A, -1); Csin(y_d, A, -1);
+	}
+	if (dir != 1) 
+	{
+		interval y_tana = Y/Tan(A), xtana = X*Tan(A);
+		X.Intersect(y_tana); Y.Intersect(xtana);
+		interval D = Sqrt(Sqr(X)+Sqr(Y)), dcosa = D*Cos(A), dsina = D*Sin(A);
+		X.Intersect(dcosa); Y.Intersect(dsina);
+	}
+}
+//----------------------------------------------------------------------
 void CAngle1(interval& X2, interval& Y2, interval& Theta, interval& X1, interval& Y1)
 {
 	interval SinTheta = Sin(Theta);

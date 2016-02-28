@@ -302,7 +302,7 @@ void Csin(interval& Y, interval& X, int dir = 0);
 void Ctan(interval& Y, interval& X, int dir = 0);
 void Catan(interval& Y, interval& X, int dir = 0);
 void Csinc(interval& Y, interval& X, int dir = 0);
-//Carg (different from CAngle, with less parameters...)?
+void Carg(interval& A, interval& X, interval& Y, int dir = 0); // Not fully implemented...
 int CAngle(interval& X2, interval& Y2, interval& Theta, interval& X1, interval& Y1, bool StrongAngle); // Deprecated.
 #define CNorm Cnorm
 void Cnorm(interval& N, interval& X, interval& Y);
