@@ -469,7 +469,6 @@ interval Det(const box& U, const box& V)
 	interval v2 = V[2];
 	interval v1 = V[1];
 	interval u2 = U[2];
-	interval r = u1*v2 - v1*u2;
 	return u1*v2 - v1*u2;
 }
 //----------------------------------------------------------------------
@@ -875,23 +874,23 @@ vector<box>* diff(box x, box y)
 
 			if (!c1.isEmpty) 
 			{
-				box v(nn);
+				box v1(nn);
 				for (int i = 1; i < var; i++)
-					v[i] = y[i];
-				v[var] = c1;
+					v1[i] = y[i];
+				v1[var] = c1;
 				for (int i = var+1; i <= nn; i++)
-					v[i] = x[i];
-				tmp->push_back(v);
+					v1[i] = x[i];
+				tmp->push_back(v1);
 
 				if (!c2.isEmpty) 
 				{
-					box v(nn);
+					box v2(nn);
 					for (int i = 1; i < var; i++)
-						v[i] = y[i];
-					v[var] = c2;
+						v2[i] = y[i];
+					v2[var] = c2;
 					for (int i = var+1; i <= nn; i++)
-						v[i] = x[i];
-					tmp->push_back(v);
+						v2[i] = x[i];
+					tmp->push_back(v2);
 				}
 			}
 		}

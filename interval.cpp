@@ -39,7 +39,6 @@ void Min1(double& zmin0, double& zmin1, double a, double b, double c)
 	if ((a <= b) && (a <= c)) { zmin0 = a; zmin1 = min(b, c); return; };
 	if ((b <= a) && (b <= c)) { zmin0 = b; zmin1 = min(a, c); return; };
 	if ((c <= b) && (c <= a)) { zmin0 = c; zmin1 = min(a, b); return; };
-	return;
 }
 //----------------------------------------------------------------------
 void Max1(double& zmax0, double& zmax1, double a, double b, double c)
@@ -180,10 +179,10 @@ double DistanceDirSegments(double mx, double my, double theta, vector<double> ax
 void DistanceDirSegments(double& d, double& phi, double mx, double my, double theta, vector<double> ax, vector<double> ay, vector<double> bx, vector<double> by)
 {     
 	// Distance directionnelle relativement a un polygone (le triedre m-a-b doit etre direct, sinon cette distance est infinie)
-	d = oo;
+	d = oo; phi = 0;
 	for (unsigned int j = 0; j < ax.size(); j++)
 	{
-		double dj,phij;
+		double dj = 0, phij = 0;
 		DistanceDirSegment(dj,phij,mx,my,theta,ax[j],ay[j],bx[j],by[j]);
 		if (dj < d) { d=dj;phi=phij; };
 	}
@@ -249,17 +248,17 @@ double DistanceDirCircles(double mx, double my, double theta, vector<double> cx,
 	// Distance directionnelle relativement a plusieurs cercles.
 	vector<double> dist(cx.size());
 	for (unsigned int j = 0; j < cx.size(); j++)
-		dist[j] = DistanceDirCercle(mx, my, theta, cx[j], cy[j], r[j]);
+		dist[j] = DistanceDirCircle(mx, my, theta, cx[j], cy[j], r[j]);
 	double distmin = Min(dist);
 	return (distmin);
 }
 //----------------------------------------------------------------------
 void DistanceDirCircles(double& d,double& phi, double mx, double my, double theta, vector<double> cx, vector<double> cy, vector<double> r)
 {       
-	d = oo;
+	d = oo; phi = 0;
 	for (unsigned int j = 0; j < cx.size(); j++)
 	{
-		double dj, phij;
+		double dj = 0, phij = 0;
 		DistanceDirCircle(dj,phij,mx,my,theta,cx[j],cy[j],r[j]);
 		if (dj < d) { d=dj; phi=phij; };
 	}
@@ -280,7 +279,7 @@ void DistanceDirSegmentsOrCircles(double& d, double& phi, double mx, double my, 
 								  vector<double> cx, vector<double> cy, vector<double> r)
 {     
 	// returns the distance and orientation collected by a laser rangefinder in a room made with segments and circles
-	double phi1a, phi1b, d1a, d1b;
+	double phi1a = 0, phi1b = 0, d1a = oo, d1b = oo;
 	DistanceDirSegments(d1a,phi1a,mx,my,theta,ax,ay,bx,by);
 	DistanceDirCircles(d1b,phi1b,mx,my,theta,cx,cy,r);
 	if (d1a < d1b) { d = d1a; phi = phi1a-theta; } else { d = d1b; phi = phi1b-theta; }
@@ -1397,8 +1396,8 @@ int CAngle(interval& X2, interval& Y2, interval& Theta, interval& X1, interval& 
 		Theta = -Theta2;
 		interval SqrX1, SqrY1, SqrX2, SqrY2, N2;
 		N2 = Inter(Sqr(X1) + Sqr(Y1), Sqr(X2) + Sqr(Y2));
-		CNorm(N2, X1, Y1);
-		CNorm(N2, X2, Y2);
+		Cnorm(N2, X1, Y1);
+		Cnorm(N2, X2, Y2);
 	}
 	if (X2.isEmpty || Y2.isEmpty || Theta.isEmpty || X1.isEmpty || Y1.isEmpty) return -1;
 	return 1;
@@ -1574,7 +1573,7 @@ void Cheaviside(interval& Y, interval& X, int dir, double a)
 	interval W = Inter(interval(1), Y);
 	if (dir != -1)
 	{
-		interval U = Union(Z, W);
+		//interval U = Union(Z, W);
 		if (X.isEmpty) Y = X;
 		else 
 		{
@@ -1860,7 +1859,7 @@ void CPointInSegmentsOrCircles(interval& mx, interval& my, vector<double> ax, ve
 	{
 		mx = mx1; my = my1;
 	}
-	if ((ax.size() == 0)&&(cx.size() >= 0))          // pas de segments
+	if (ax.size() == 0)          // pas de segments
 	{
 		mx = mx2; my = my2;
 	}
@@ -2125,8 +2124,8 @@ void CPoseTransPointInCircles(interval& px, interval& py, interval& alpha, inter
 //----------------------------------------------------------------------
 void CPoseTransPointInWall(interval& px, interval& py, interval& alpha, interval& d0, double ax, double ay, double bx, double by, bool truth)
 {    
-	interval qx=interval(-oo,oo);
-	interval qy=interval(-oo,oo);
+	//interval qx=interval(-oo,oo);
+	//interval qy=interval(-oo,oo);
 	interval d=interval(-oo,oo);
 	interval px1(px);
 	interval py1(py);
@@ -2462,7 +2461,7 @@ void Inter1(interval& r0, interval& r1, const interval &a, const interval &b, co
 	if (a.isEmpty) { r0 = a; r1 = Inter(b, c); return; };
 	if (b.isEmpty) { r0 = b; r1 = Inter(a, c); return; };
 	if (c.isEmpty) { r0 = c; r1 = Inter(a, b); return; };
-	double zmin0, zmax0, zmin1, zmax1;
+	double zmin0 = NAN, zmax0 = NAN, zmin1 = NAN, zmax1 = NAN;
 	//Min1(zmin0,zmin1,Inf(a),Inf(b),Inf(c));
 	//Max1(zmax0,zmax1,Sup(a),Sup(b),Sup(c));
 	Max1(zmin0, zmin1, a.inf, b.inf, c.inf);
