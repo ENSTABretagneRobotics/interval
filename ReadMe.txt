@@ -4,3 +4,5 @@ interval
 - Compatibility with several existing samples published in research papers (e.g. see http://www.ensta-bretagne.fr/jaulin/).
 - Ideal to quickly start with intervals while being able to easily apply the results on real robots. 
 - Can be used with VIBes (https://github.com/ENSTABretagneRobotics/VIBES/) to easily draw the results of interval computations.
+
+See also https://github.com/ENSTABretagneRobotics/matrix_lib/ to be able to use interval matrices.
