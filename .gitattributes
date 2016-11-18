@@ -42,6 +42,14 @@ Makefile eol=lf
 *.res eol=crlf
 *.resx eol=crlf
 
+# LaTeX
+*.tex -text
+*.TEX -text
+*.bib -text
+*.BIB -text
+*.lyx -text
+*.LYX -text
+
 # Seanet
 *.v4log binary
 *.partheader binary
