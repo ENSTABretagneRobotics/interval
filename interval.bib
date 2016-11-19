@@ -12,6 +12,14 @@
 % _ Image processing.
 % _ Unsorted 2.
 % _ Misc.
+%
+% Recommendations : 
+% _ For authors names in several parts such as "Le Bars", use '{' and '}' to enclose the parts, e.g. {Le Bars}.
+% _ For author surnames in several parts such as "Mohamed Saad", and that should be displayed as initials, use the tilde character to separate the initials, e.g. "M.~S.".
+% _ If an article title should contain uppercase acronyms such as "AUV", use '{' and '}' to enclose the parts that should be as is, otherwise they might appear lowercase.
+% _ Check BibTeX files automatically generated from websites and remove unnecessary information (e.g. DOI, ISSN, etc.) since they often appear broken, check also if the previous recommendations are respected.
+% _ Use the LaTeX special characters for accentuated characters.
+% _ Avoid ':' character in labels since sometimes it causes errors...
 %-------------------------------------------------------
 
 %-------------------------------------------------------
@@ -2621,32 +2629,12 @@ pages = {153--159}
   number = 3,
   pages = {376-382}
 }
-
-@ARTICLE{Leonard92a,
-  author = {J.~J. Leonard and H.~F. Durrant-Whyte},
-  year = 1992,
-  title = {Dynamic map building for an autonomous mobile robot},
-  journal = {International Journal of Robotics Research},
-  volume = 11,
-  number = 4
-}
-
 @BOOK{Leonard92b,
   author = {J.~J. Leonard and H.~F. Durrant-Whyte},
   year = 1992,
   title = {Directed Sonar Sensing for Mobile Robot Navigation},
   publisher = {Kluwer},
   address = {Boston}
-}
-
-@ARTICLE{Leonard2002,
-  author = {J. Leonard and R. Rikoski and P. Newman and M. Bosse},
-  year = 2002,
-  title = {Mapping partially observable features from multiple uncertain vantage points},
-  journal = {International Journal of Robotics Research},
-  volume = 21,
-  number = 10,
-  pages = {943-975}
 }
 @CONFERENCE{Lerch00,
   author = {M. Lerch and J. {Wolff von Gudenberg}},
@@ -6314,14 +6302,6 @@ PUBLISHER = {ISTE Ltd and John Wiley \& Sons Inc}
   booktitle =    {The 15th Mediterranean Conference on Control and Automation - MED'2007},
   year      =    {2007},
 }
-
-@Book{briere:microtransat,
-     author = {Y. Bri\`ere},
-     title = "The first microtransat challenge, {\tt http://web.ensica.fr/microtransat}",
-     publisher = "ENSICA",
-     year = 2006
-   }
-
 @Inproceedings{Fliess_Sira04,
   author    =    {M. Fliess and H. Sira-Ramirez},
   title     =    {Control via state estimations of some nonlinear systems},
@@ -6329,7 +6309,6 @@ PUBLISHER = {ISTE Ltd and John Wiley \& Sons Inc}
   address   =    {Stuttgart},
   year      =    {2004}
 }
-
 @Inproceedings{Diop:Fliess91,
   author    =    {S. Diop and M. Fliess},
   title     =    {Nonlinear observability, identifiability and persistent trajectories},
@@ -6338,19 +6317,6 @@ PUBLISHER = {ISTE Ltd and John Wiley \& Sons Inc}
   pages =        {714-719},
   year      =    {1991},
 }
-
-
-@Inproceedings{SauzeNeal06,
-  author    =    {C. Sauze and M. Neal},
-  title     =    {{An Autonomous Sailing Robot for Ocean Observation}},
-  booktitle =    {proceedings of TAROS 2006},
-  address   =    {Guildford, UK},
-  pages =        {190-197},
-  year      =    {2006}
-}
-
-
-
 @Article{FliessLevine95,
   author =       {M. Fliess and J. L\'evine and P. Martin and P. Rouchon},
   title =        {Flatness and defect of non-linear systems: introductory theory and applications},
@@ -6359,15 +6325,12 @@ PUBLISHER = {ISTE Ltd and John Wiley \& Sons Inc}
   pages =        {1327-1361},
   year =         {1995}
 }
-
 @Book{GauthierKupka01,
   author =   {J.P. Gauthier and I. Kupka},
   title =    {Deterministic observation theory and applications},
   publisher =  {Cambridge University Press},
   year =     {2001},
 }
-
-
 @Inproceedings{Araya09,
   author    =    {I. Araya and B. Neveu and G. Trombettoni},
   title     =    {{Exploiting Common Subexpressions in Numerical CSPs}},
@@ -6729,7 +6692,6 @@ month = {October}
   publisher = {Herm\`es-Lavoisier},
   address = {Paris}
 }
-
 @article{Tarski55,
   author = {A. Tarski},
   title = {A lattice-theoretical fixpoint theorem and its applications},
@@ -6739,30 +6701,6 @@ month = {October}
   pages = {285--309},
    year = {1955}
 }
-
-@conference{blanco2008ppa,
-  title={{A pure probabilistic approach to range-only SLAM}},
-  author={Blanco, J.L. and Gonzalez, J. and Fern\'andez-Madrigal, J.A.},
-  booktitle = {Proceedings of the IEEE International Conference on Robotics and Automation},
-  pages={1436--1441},
-  year={2008}
-}
-
-@TECHREPORT{Kurth04range-onlyrobot,
-    author = {Derek Kurth},
-    title = {Range-Only Robot Localization and SLAM with Radio},
-    institution = {Robotics Institute, Carnegie Mellon Univ., Pittsburgh, Master's thesis CMU-RI-TR-04-29},
-    year = {2004}
-}
-
-@TECHREPORT{Spletzer04,
-  author = {J. Spletzer},
-  year = 2004,
-  title = {A New Approach to Range-only SLAM for Wireless Sensor Networks},
-  number = 2809,
-  institution = {LU-CSE-04-008, Lehigh University, Mar 2004}
-}
-
 @InProceedings{Beldiceanu06,
   author =  {N. Beldiceanu and M. Carlsson and S. Demassey and T. Petit},
   title =  {Graph properties based filtering},
@@ -6770,7 +6708,6 @@ month = {October}
   pages = {59--74},
   year = {2006},
 }
-
 @InProceedings{Dooms05,
   author =  {G. Dooms and Y. Deville and P. Dupont},
   title =  {Introducing a Graph Computation Domain in Constraint Programming},
@@ -6778,7 +6715,6 @@ month = {October}
   pages = {211--225},
   year = {2005},
 }
-
 @article{messine2004,
     title = {Deterministic global optimization using interval constraint propagation techniques},
     volume = {38},
@@ -6788,7 +6724,6 @@ month = {October}
     year = {2004},
     pages = {277--293}
 }
-
 @article{Rauh12,
   author = {A. Rauh and E. Auer and T. Dotschel and H. Aschemann},
   title = {Verified stability analysis of continuous-time control systems with bounded parameter uncertainties and stochastic disturbances},
@@ -6798,7 +6733,6 @@ month = {October}
   pages = {345--356},
    year = {2012}
 }
-
 @BOOK{Dummit04,
   author = {D.S. Dummit and R.M. Foote},
   year = 2004,
@@ -7250,7 +7184,6 @@ month = {October}
   year = {2014},
   address = {Los Angeles, United States}
 }
-
 @article{Yorke67,
   author = {J.A. Yorke},
   title = {Invariance for ordinary differential equations},
@@ -7260,7 +7193,6 @@ month = {October}
   pages = {353--372},
    year = {1967}
 }
-
 @article{Fernandes87,
   author = {M.L. Fernandes and F. Zanolin},
   title = {Remarks on strongly flow-invariant sets},
@@ -7269,9 +7201,6 @@ month = {October}
   pages = {176--188},
    year = {1987}
 }
-
-
-
 @article{Gargantini72,
   author = {I. Gargantini and P. Henrici},
   title = {Circular arithmetic and the determination of polynomial zeros},
@@ -7280,8 +7209,6 @@ month = {October}
   pages = {305--320},
    year = {1972}
 }
-
-
 @article{Petrov01,
   author = {E. S. Petrov and T. M. Yakhno},
   title = {Subdefinite Models and Logic Programming: Implementation of Constraints},
@@ -7291,8 +7218,6 @@ month = {October}
   pages = {95--100},
    year = {2001}
 }
-
-
 @article{Semenov97,
   author = {I. Shvetsov and A. Semenov and V. Telerman},
   title = {Application of subdefinite models in engineering},
@@ -9426,11 +9351,11 @@ An interval approach},
    }
 @Inproceedings{SauzeNeal06,
   author    =    {C. Sauze and M. Neal},
-  title     =    {An Autonomous Sailing Robot for Ocean Observation},
-  booktitle =    {in proceedings of TAROS 2006},
+  title     =    {{An Autonomous Sailing Robot for Ocean Observation}},
+  booktitle =    {proceedings of TAROS 2006},
   address   =    {Guildford, UK},
   pages =        {190-197},
-  year      =    {2006},
+  year      =    {2006}
 }
 @INPROCEEDINGS{CruzAlves2008,
   author = {N.A. Cruz and J.C. Alves},
@@ -9888,6 +9813,19 @@ An interval approach},
   number = 1,
   pages = {23--47}
 }
+@TECHREPORT{Kurth04range-onlyrobot,
+    author = {Derek Kurth},
+    title = {Range-Only Robot Localization and SLAM with Radio},
+    institution = {Robotics Institute, Carnegie Mellon Univ., Pittsburgh, Master's thesis CMU-RI-TR-04-29},
+    year = {2004}
+}
+@TECHREPORT{Spletzer04,
+  author = {J. Spletzer},
+  year = 2004,
+  title = {A New Approach to Range-only SLAM for Wireless Sensor Networks},
+  number = 2809,
+  institution = {LU-CSE-04-008, Lehigh University, Mar 2004}
+}
 @ARTICLE{Thrun05,
   AUTHOR	= {S. Thrun and M. Montemerlo},
   TITLE		= {The {GraphSLAM} Algorithm With Applications to Large-Scale Mapping of Urban Structures},
@@ -9956,6 +9894,13 @@ An interval approach},
   booktitle =  {JNRR (Journ\'ee Nationales de la Recherche en Robotique) 2007},
   address =  {Obernai, France}
 }
+@conference{blanco2008ppa,
+  title={{A pure probabilistic approach to range-only SLAM}},
+  author={Blanco, J.L. and Gonzalez, J. and Fern\'andez-Madrigal, J.A.},
+  booktitle = {Proceedings of the IEEE International Conference on Robotics and Automation},
+  pages={1436--1441},
+  year={2008}
+}
 @ARTICLE{JolyRivesComparaison08,
   author = {C. Joly and P. Rives},
   year = 2008,
@@ -10011,6 +9956,32 @@ An interval approach},
 %-------------------------------------------------------
 %Cartography
 %-------------------------------------------------------
+@ARTICLE{Leonard92a,
+  author = {Leonard, J.~J. and Durrant-Whyte, H.~F.},
+  title = {{Dynamic Map Building for an Autonomous Mobile Robot}},
+  journal = {International Journal of Robotics Research},
+  volume = {11},
+  number = {4},
+  year = {1992}
+}
+@ARTICLE{Leonard2002,
+  author = {J. Leonard and R. Rikoski and P. Newman and M. Bosse},
+  year = 2002,
+  title = {Mapping partially observable features from multiple uncertain vantage points},
+  journal = {International Journal of Robotics Research},
+  volume = 21,
+  number = 10,
+  pages = {943-975}
+}
+@ARTICLE{Dro05,
+  author = {Drocourt, C. and Delahoche, L. and Brassart, E. and Marhic, B. and Clerentin, A.},
+  title = {{Incremental Construction of the Robot's Environmental Map using Interval Analysis}},
+  journal = {Global Optimization and Constraint Satisfaction: Second International Workshop, COCOS 2003},
+  booktitle = {Lecture Notes in Computer Science (LNCS)},
+  volume= {3478},
+ pages       = {127--141},
+   year = {2005}
+}
 
 %-------------------------------------------------------
 %Control
@@ -10019,36 +9990,18 @@ An interval approach},
 %-------------------------------------------------------
 %Image processing
 %-------------------------------------------------------
-@ARTICLE(CAN86,
-author="J. Canny",
-title="A Computational Approach to Edge Detection",
-journal="IEEE Transactions on Pattern Analysis and Machine Intelligence, Vol 8, No. 6",
-year="1986",)
-
-@BOOK(RUS02,
-author="J. C. Russ",
-title="Image processing handbook (The)",
-publisher="CRC Press",
-year="2002",)
-
-@BOOK(BOV00,
-author="A. Bovik",
-title="Handbook of image and video processing",
-publisher="Academic Press",
-year="2000",)
-
-@ARTICLE(DUD72,
+@ARTICLE{DUD72,
 author="R. O. Duda and P. E. Hart",
 title="Use of the hough transform to detect lines and curves in pictures",
 journal="Comm. ACM Vol 15.",
-year="1972",)
-
-@ARTICLE(KIM75,
+year="1972"
+}
+@ARTICLE{KIM75,
 author="C. Kimme and D. H Ballard and J. Sklansky",
 title="Finding circles by an array of accumulators",
 journal="CACM",
-year="1975",)
-
+year="1975"
+}
 @Article{gorman76,
   author =       {F. O'Gorman and M.B. Clowes},
   title =        {{Finding Picture Edges Through Collinearity of Feature Points}},
@@ -10057,6 +10010,30 @@ year="1975",)
   number =       {4},
   pages =        {449--456},
   year =         {1976}
+}
+@ARTICLE{CAN86,
+author="J. Canny",
+title="A Computational Approach to Edge Detection",
+journal="IEEE Transactions on Pattern Analysis and Machine Intelligence, Vol 8, No. 6",
+year="1986"
+}
+@BOOK{BOV00,
+author="A. Bovik",
+title="Handbook of image and video processing",
+publisher="Academic Press",
+year="2000"
+}
+@BOOK{RUS02,
+author="J. C. Russ",
+title="Image processing handbook (The)",
+publisher="CRC Press",
+year="2002"
+}
+@Book{Forsyth03,
+  author =   {D.A. Forsyth and J. Ponce},
+  title =    {{Computer Vision, a modern approach}},
+  publisher =    {Prentice Hall},
+  year =     {2003}
 }
 
 %-------------------------------------------------------
@@ -10235,23 +10212,6 @@ month = {October}
   pages =        {221--236},
   year      =    {2004}
 }
-@ARTICLE{Dro05,
-  author = {Drocourt, C. and Delahoche, L. and Brassart, E. and Marhic, B. and Clerentin, A.},
-  title = {{Incremental Construction of the Robot's Environmental Map using Interval Analysis}},
-  journal = {Global Optimization and Constraint Satisfaction: Second International Workshop, COCOS 2003},
-  booktitle = {Lecture Notes in Computer Science (LNCS)},
-  volume= {3478},
- pages       = {127--141},
-   year = {2005}
-}
-@ARTICLE{Leo92,
-  author = {Leonard, J.~J. and Durrant-Whyte, H.~F.},
-  title = {{Dynamic Map Building for an Autonomous Mobile Robot}},
-  journal = {International Journal of Robotics Research},
-  volume = {11},
-  number = {4},
-  year = {1992}
-}
 @ARTICLE{Kal60,
   author = {Kalman, R.E.},
   title = {{Contributions to the Theory of Optimal Control}},
@@ -10321,8 +10281,7 @@ month = {October}
   title =    {{Diagrammatic Interval Analysis with Applications}},
   publisher =    {IPPT PAN Reports (ISSN 0208-5658), Warsaw 2006},
   year =     {2006}
-}
- 
+} 
 @BOOK{Idier08,
 EDITOR = {J\'erôme Idier},
 TITLE = {Bayesian Approach to Inverse Problems},
@@ -10331,14 +10290,6 @@ YEAR = {2008},
 MONTH = {avr.},
 PUBLISHER = {ISTE Ltd and John Wiley \& Sons Inc}
 } 
-
-@Book{Forsyth03,
-  author =   {D.A. Forsyth and J. Ponce},
-  title =    {{Computer Vision, a modern approach}},
-  publisher =    {Prentice Hall},
-  year =     {2003}
-}
-
 @Article{Neumier04clouds,
   author =       {A. Neumaier},
   title =        {Clouds, fuzzy sets and probability intervals},
@@ -10348,7 +10299,6 @@ PUBLISHER = {ISTE Ltd and John Wiley \& Sons Inc}
   pages =        {249–-272},
   year =         {2004}
 }
-
 @Article{Dempster67,
   author =       {A.P. Dempster},
   title =        {Upper and lower probabilities induced by a multivalued mapping},
@@ -10358,7 +10308,6 @@ PUBLISHER = {ISTE Ltd and John Wiley \& Sons Inc}
   pages =        {325--339},
   year =         {1967}
 }
-
 @Article{Denoeux06,
   author =       {T. Denoeux},
   title =        {Constructing belief functions from sample data using multinomial confidence regions},
@@ -11112,11 +11061,12 @@ address = {Switzerland},
   address = {Nice, France},
   type = {{PhD} dissertation}
 }
-@PHDTHESIS(Florez08,
-author="J. Fl{\'o}rez",
-title="Improvements in the ray tracing of implicit surfaces based on interval arithmetic",
-school="Universitat de Girona",
-year="2008",)
+@PHDTHESIS{Florez08,
+author={J. Fl{\'o}rez},
+title={Improvements in the ray tracing of implicit surfaces based on interval arithmetic},
+school={Universitat de Girona},
+year=2008
+}
 @PHDTHESIS{ElRafei08,
   author = {M. El-Rafei},
   year = {2008},
