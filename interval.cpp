@@ -2546,7 +2546,7 @@ void C_q_in(interval& x, int q, vector<interval>& y)
 			imax = max(imax, (int)i);
 		}
 	}
-	if (imax == -1) x = interval();
+	if ((imax == -1)||(imin == (int)(V.size()))) x = interval(); // Added condition to check also imin.
 	else x = interval(V[imin].val, V[imax].val);
 }
 //----------------------------------------------------------------------
