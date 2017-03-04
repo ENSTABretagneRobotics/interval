@@ -89,7 +89,7 @@ imatrix operator*(const imatrix& X, const imatrix& Y)
 			Z.SetVal(i,j,s);
 			//Z(i,j)=s;
 		}
-		return Z;
+	return Z;
 }
 //----------------------------------------------------------------------
 box operator*(const imatrix& A, const box& x)
@@ -117,7 +117,7 @@ imatrix operator*(const rmatrix& X, const imatrix& Y)
 				s = s+X.GetVal(i,k)*Y.GetVal(k,j);
 			Z.SetVal(i,j,s);
 		}
-		return Z;
+	return Z;
 }
 //----------------------------------------------------------------------
 imatrix operator*(const double a, const imatrix& X)

@@ -413,7 +413,8 @@ void Update(const box& X)
 		if (X[i].isEmpty)
 		{
 			for (int j = 1; j <= Size(X); j++)
-				X[j] = interval(); return;
+				X[j] = interval(); 
+			return;
 		}
 	}
 }

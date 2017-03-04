@@ -78,7 +78,7 @@ rmatrix operator*(const rmatrix& X, const rmatrix& Y)
 				s = s+X.GetVal(i,k)*Y.GetVal(k,j);
 			Z.SetVal(i,j,s);
 		}
-		return Z;
+	return Z;
 }
 //----------------------------------------------------------------------
 rmatrix operator*(const double a, const rmatrix& X)
