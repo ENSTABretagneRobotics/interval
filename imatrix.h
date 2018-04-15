@@ -87,4 +87,4 @@ double	    Width	      (imatrix&,vector<int>&);
 double	    Width	      (imatrix&,imatrix&);
 imatrix          Zeros             (int,int);*/
 
-#endif // __IMATRIX__
+#endif // !__IMATRIX__

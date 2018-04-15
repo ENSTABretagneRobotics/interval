@@ -7,7 +7,7 @@
 #include <float.h>
 #ifndef isnan
 #define isnan _isnan
-#endif // isnan
+#endif // !isnan
 // Used to define NAN (Not A Number).
 #ifdef NAN_CONSTS_NEEDED
 const unsigned long nan[2] = {0xffffffff, 0xffffffff};

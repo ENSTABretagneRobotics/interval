@@ -145,4 +145,4 @@ void Sucre(box&, box&);
 // Operation sur les boites
 std::vector<box>* diff(box x, box y);
 
-#endif // __BOX__
+#endif // !__BOX__

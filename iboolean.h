@@ -15,7 +15,7 @@
 // Enable additional features in math.h.
 #ifndef _USE_MATH_DEFINES
 #define _USE_MATH_DEFINES
-#endif // _USE_MATH_DEFINES
+#endif // !_USE_MATH_DEFINES
 #endif // _MSC_VER
 
 #include <stdio.h>
@@ -50,4 +50,4 @@ public:
 	friend std::ostream& operator<<(std::ostream& os, const iboolean&);
 };
 
-#endif // __IBOOLEAN__
+#endif // !__IBOOLEAN__

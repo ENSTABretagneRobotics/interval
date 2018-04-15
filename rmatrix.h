@@ -101,4 +101,4 @@ double	    Width	      (rmatrix&,rmatrix&);
 //rmatrix          Empty             (int);
 //rmatrix          Infinity          (int);*/
 
-#endif // __RMATRIX__
+#endif // !__RMATRIX__

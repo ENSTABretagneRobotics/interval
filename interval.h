@@ -26,7 +26,7 @@
 #ifdef _MSC_VER
 #ifndef UNREFERENCED_PARAMETER
 #define UNREFERENCED_PARAMETER(P) (P)
-#endif // UNREFERENCED_PARAMETER
+#endif // !UNREFERENCED_PARAMETER
 #endif // _MSC_VER
 
 #ifdef __GNUC__
@@ -52,7 +52,7 @@
 
 #ifndef INFINITY
 #define INFINITY HUGE_VAL
-#endif // INFINITY
+#endif // !INFINITY
 
 #if defined(_MSC_VER) || defined(__BORLANDC__) 
 // Used to define NAN (Not A Number).
@@ -62,7 +62,7 @@ extern const double nan_double;
 //#define NAN (std::numeric_limits<double>::quiet_NaN())
 #define NAN nan_double
 #define NAN_CONSTS_NEEDED
-#endif // NAN
+#endif // !NAN
 #endif // defined(_MSC_VER) || defined(__BORLANDC__) 
 
 // Infinity is denoted by oo.
@@ -71,7 +71,7 @@ extern const double nan_double;
 //#define oo 1000000000.0
 //#define oo INFINITY
 #define oo (std::numeric_limits<double>::infinity())
-#endif // oo
+#endif // !oo
 
 // Declaration of the interval class.
 class interval;
@@ -81,11 +81,11 @@ class interval;
 extern const interval nai;
 #define NAI nai
 #define NAI_CONST_NEEDED
-#endif // NAI
+#endif // !NAI
 
 #ifndef DISABLE_USING_NAMESPACE_STD_INTERVAL_H
 using namespace std;
-#endif // DISABLE_USING_NAMESPACE_STD_INTERVAL_H
+#endif // !DISABLE_USING_NAMESPACE_STD_INTERVAL_H
 
 // Include <QDataStream> and <QDebug> before this file to be able to use Qt specific features if you have Qt.
 #ifdef QT_VERSION 
@@ -408,4 +408,4 @@ void diffI(interval &x0, interval &x1, interval &c0, interval &c1);
 iboolean TestDiskExists(const interval& X, const interval& Y, const interval& P1, const interval& P2, const interval& P3);
 iboolean TestDiskForall(const interval& X, const interval& Y, const interval& P1, const interval& P2, const interval& P3);
 
-#endif // __INTERVAL__
+#endif // !__INTERVAL__
