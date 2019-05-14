@@ -495,7 +495,7 @@ interval Abs(const interval& a)
 interval Modulo(const interval& a, double x)
 {
 	if ((a.inf >= 0) && (a.inf<x)) return (a);
-	int k = (long)floorl((a.inf / x));
+	int k = (int)floor(a.inf / x);
 	double offset = x * k;
 	return interval(a.inf - offset, a.sup - offset);
 }
