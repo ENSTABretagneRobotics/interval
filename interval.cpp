@@ -20,8 +20,6 @@ const double nan_double = -*(double*)nan;
 const interval nai = interval();
 #endif // NAI_CONST_NEEDED
 
-#include <cmath>
-
 const double PI = M_PI;
 const double PI_2 = M_PI_2;
 const double TROIS_PI_2 = 3 * PI_2;

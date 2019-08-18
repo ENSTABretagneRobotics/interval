@@ -16,12 +16,12 @@
 //#	endif // _CRT_NONSTDC_NO_WARNINGS
 #endif // _MSC_VER
 
+#include "iboolean.h"
+
 #include <vector>
 #include <iomanip>
-#include <iostream>
 #include <algorithm>
 #include <limits> // For std::numeric_limits<double>.
-#include "iboolean.h"
 
 #ifdef _MSC_VER
 #ifndef UNREFERENCED_PARAMETER

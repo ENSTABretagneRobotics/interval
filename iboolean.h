@@ -9,8 +9,6 @@
 // if x=[1,1]=itrue  : certainly true
 // Otherwise x=iempty
 
-#include <iostream>
-
 #ifdef _MSC_VER
 // Enable additional features in math.h.
 #ifndef _USE_MATH_DEFINES
@@ -21,6 +19,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+#include <float.h>
+
+#include <iostream>
+#include <cstdlib>
+#include <cmath>
+#include <cfloat>
 
 enum IBOOLEAN {itrue, ifalse, iperhaps, iempty};
 
