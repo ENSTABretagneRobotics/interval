@@ -2,6 +2,16 @@
 
 #include "box.h"
 
+#ifdef __GNUC__
+// Disable some GCC warnings.
+#if (__GNUC__ >= 9)
+#pragma GCC diagnostic ignored "-Wdeprecated-copy"
+#endif // (__GNUC__ >= 9)
+#if (((__GNUC__ == 4) && (__GNUC_MINOR__ >= 6)) || (__GNUC__ > 4))
+#pragma GCC diagnostic push
+#endif // (((__GNUC__ == 4) && (__GNUC_MINOR__ >= 6)) || (__GNUC__ > 4))
+#endif // __GNUC__
+
 using namespace std;
 
 //----------------------------------------------------------------------
@@ -899,3 +909,14 @@ vector<box>* diff(box x, box y)
 	return tmp;
 }
 //----------------------------------------------------------------------
+
+#ifdef __GNUC__
+// Restore the GCC warnings previously disabled.
+#if (((__GNUC__ == 4) && (__GNUC_MINOR__ >= 6)) || (__GNUC__ > 4))
+#pragma GCC diagnostic pop
+#else
+//#if (__GNUC__ >= 9)
+//#pragma GCC diagnostic warning "-Wdeprecated-copy"
+//#endif // (__GNUC__ >= 9)
+#endif // (((__GNUC__ == 4) && (__GNUC_MINOR__ >= 6)) || (__GNUC__ > 4))
+#endif // __GNUC__

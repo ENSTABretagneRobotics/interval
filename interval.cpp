@@ -2,6 +2,16 @@
 
 #include "interval.h"
 
+#ifdef __GNUC__
+// Disable some GCC warnings.
+#if (__GNUC__ >= 9)
+#pragma GCC diagnostic ignored "-Wdeprecated-copy"
+#endif // (__GNUC__ >= 9)
+#if (((__GNUC__ == 4) && (__GNUC_MINOR__ >= 6)) || (__GNUC__ > 4))
+#pragma GCC diagnostic push
+#endif // (((__GNUC__ == 4) && (__GNUC_MINOR__ >= 6)) || (__GNUC__ > 4))
+#endif // __GNUC__
+
 #if defined(_MSC_VER) || defined(__BORLANDC__) 
 // Enable the use of isnan().
 #include <float.h>
@@ -2667,3 +2677,14 @@ iboolean TestDiskForall(const interval& X,const interval& Y,const interval& P1,c
 	return (dedans1&&dedans2);
 }
 //----------------------------------------------------------------------
+
+#ifdef __GNUC__
+// Restore the GCC warnings previously disabled.
+#if (((__GNUC__ == 4) && (__GNUC_MINOR__ >= 6)) || (__GNUC__ > 4))
+#pragma GCC diagnostic pop
+#else
+//#if (__GNUC__ >= 9)
+//#pragma GCC diagnostic warning "-Wdeprecated-copy"
+//#endif // (__GNUC__ >= 9)
+#endif // (((__GNUC__ == 4) && (__GNUC_MINOR__ >= 6)) || (__GNUC__ > 4))
+#endif // __GNUC__
