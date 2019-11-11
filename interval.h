@@ -50,6 +50,14 @@
 #pragma warning(disable : 4996)
 #endif // _MSC_VER
 
+// The definition of M_PI and M_PI_2 is not in C++ standard, although it is often provided by compilers...
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif // !M_PI
+#ifndef M_PI_2
+#define M_PI_2 1.57079632679489661923
+#endif // !M_PI_2
+
 #ifndef INFINITY
 #define INFINITY HUGE_VAL
 #endif // !INFINITY
