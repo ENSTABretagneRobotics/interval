@@ -1,7 +1,7 @@
 // Simple interval library from Luc JAULIN, with minor modifications from Fabrice LE BARS and Jeremy NICOLA.
 
-#ifndef __IMATRIX__
-#define __IMATRIX__
+#ifndef IMATRIX_H
+#define IMATRIX_H
 
 #include "rmatrix.h"
 
@@ -87,4 +87,4 @@ double	    Width	      (imatrix&,vector<int>&);
 double	    Width	      (imatrix&,imatrix&);
 imatrix          Zeros             (int,int);*/
 
-#endif // !__IMATRIX__
+#endif // !IMATRIX_H

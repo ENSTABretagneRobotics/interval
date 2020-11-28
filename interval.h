@@ -1,7 +1,7 @@
 // Simple interval library from Luc JAULIN, with minor modifications from Fabrice LE BARS and Jeremy NICOLA.
 
-#ifndef __INTERVAL__
-#define __INTERVAL__
+#ifndef INTERVAL_H
+#define INTERVAL_H
 
 #ifdef _MSC_VER
 // Disable some Visual Studio warnings.
@@ -213,8 +213,8 @@ interval Min(const interval&, const interval&);
 interval Min(const interval&, const interval&, const interval&);
 interval Max(const interval&, const interval&);
 interval Max(const interval&, const interval&, const interval&);
-//Sign?
 interval Abs(const interval&);
+interval Sign(const interval&);
 interval Modulo(const interval& a, double x);
 interval Sqr(const interval&);
 interval Sqrt(const interval&);
@@ -228,6 +228,7 @@ interval PowRoot(const interval& x, int num, int den);
 interval Cos(const interval&);
 interval Sin(const interval&);
 interval Tan(const interval&);
+interval Atan(const interval&);
 //Arg/Atan2, param order like double version?
 interval Det(interval& ux, interval& uy, interval& vx, interval& vy);
 interval Det(interval& ux, interval& uy, double& vx, double& vy);
@@ -416,4 +417,4 @@ void diffI(interval &x0, interval &x1, interval &c0, interval &c1);
 iboolean TestDiskExists(const interval& X, const interval& Y, const interval& P1, const interval& P2, const interval& P3);
 iboolean TestDiskForall(const interval& X, const interval& Y, const interval& P1, const interval& P2, const interval& P3);
 
-#endif // !__INTERVAL__
+#endif // !INTERVAL_H

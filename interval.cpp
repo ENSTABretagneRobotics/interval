@@ -500,6 +500,14 @@ interval Abs(const interval& a)
 	else                    return interval(0, fabs(a2));
 }
 //----------------------------------------------------------------------
+interval Sign(const interval& x)
+{
+	if (x.isEmpty) return interval();
+	if (x.inf > 0) return interval(1);
+	if (x.sup < 0) return interval(-1);
+	return interval(-1, 1);
+}
+//----------------------------------------------------------------------
 interval Modulo(const interval& a, double x)
 {
 	if ((a.inf >= 0) && (a.inf<x)) return (a);
@@ -655,6 +663,12 @@ interval Sin(const interval& a)
 }
 //----------------------------------------------------------------------
 interval Tan(const interval& a) { return Sin(a) / Cos(a); }
+//----------------------------------------------------------------------
+interval Atan(const interval& x)
+{
+	if (x.isEmpty) return interval();
+	else return interval(atan(x.inf), atan(x.sup));
+}
 //----------------------------------------------------------------------
 interval Det(interval& ux, interval& uy, interval& vx, interval& vy)
 {

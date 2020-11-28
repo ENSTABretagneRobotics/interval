@@ -1,7 +1,7 @@
 // Simple interval library from Luc JAULIN, with minor modifications from Fabrice LE BARS and Jeremy NICOLA.
 
-#ifndef __RMATRIX__
-#define __RMATRIX__
+#ifndef RMATRIX_H
+#define RMATRIX_H
 
 #include "box.h"
 #include "matrix_lib/tnt.h"
@@ -101,4 +101,4 @@ double	    Width	      (rmatrix&,rmatrix&);
 //rmatrix          Empty             (int);
 //rmatrix          Infinity          (int);*/
 
-#endif // !__RMATRIX__
+#endif // !RMATRIX_H

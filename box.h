@@ -1,7 +1,7 @@
 // Simple interval library from Luc JAULIN, with minor modifications from Fabrice LE BARS and Jeremy NICOLA.
 
-#ifndef __BOX__
-#define __BOX__
+#ifndef BOX_H
+#define BOX_H
 
 #include "interval.h"
 
@@ -145,4 +145,4 @@ void Sucre(box&, box&);
 // Operation sur les boites
 std::vector<box>* diff(box x, box y);
 
-#endif // !__BOX__
+#endif // !BOX_H

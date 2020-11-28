@@ -1,7 +1,7 @@
 // Simple interval library from Luc JAULIN, with minor modifications from Fabrice LE BARS and Jeremy NICOLA.
 
-#ifndef __IBOOLEAN__
-#define __IBOOLEAN__
+#ifndef IBOOLEAN_H
+#define IBOOLEAN_H
 
 // IBOOLEAN is an interval Boolean. Used for a trivalued logic
 // if x=[0,0]=ifalse  : certainly false
@@ -54,4 +54,4 @@ public:
 	friend std::ostream& operator<<(std::ostream& os, const iboolean&);
 };
 
-#endif // !__IBOOLEAN__
+#endif // !IBOOLEAN_H
