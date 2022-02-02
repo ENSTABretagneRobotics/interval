@@ -6,7 +6,9 @@
 % _ Set-membership methods.
 % _ Sailboats.
 % _ Marine robotics.
+% _ Ground robotics.
 % _ Aerial robotics.
+% _ General robotics.
 % _ SLAM.
 % _ Localization.
 % _ Cartography.
@@ -1999,7 +2001,7 @@ An interval approach},
   	year=2018
 }
 @BOOK{jaulin_moqesm18,
-	author={L. Jaulin and A. Caiti and M. Carreras and V. Creuze and F. Plumet and B. Zerr and A. Billon-Coat (Editors)},
+	editor={L. Jaulin and A. Caiti and M. Carreras and V. Creuze and F. Plumet and B. Zerr and A. Billon-Coat},
 	year=2018,
 	title={Marine Robotics and Applications},
 	publisher={Ocean Engineering \& Oceanography}
@@ -3123,6 +3125,16 @@ address = {Los Alamitos, CA, USA},
   publisher =  {F. Vieweg \& Sohn, Butterworth - Heinemann},
   year =     {2000},
 }
+@ARTICLE{Foresti2001,
+  author={Foresti, G.L.},
+  title={Visual inspection of sea bottom structures by an autonomous underwater vehicle}, 
+  journal={IEEE Transactions on Systems, Man, and Cybernetics, Part B (Cybernetics)}, 
+  year={2001},
+  volume={31},
+  number={5},
+  pages={691-705},
+  doi={10.1109/3477.956031}
+}
 @ARTICLE{Williams01,
   author = {S. Williams and G. Dissanayake and H. Durrant-Whyte},
   year = 2001,
@@ -3216,11 +3228,26 @@ address = {Los Alamitos, CA, USA},
 	pages = {1--6},
 	Year = {2006},
 }
+@article{BoyerPorez06,
+  author = {F. Boyer and M. Porez and W. Khalil},
+  title = {Macro-continuous computed torque algorithm for a three-dimensional eel-like robot},
+  journal = {IEEE Transactions on Robotics},
+  volume= {22},
+  number = {4},
+  pages = {763--775},
+   year = {2006}
+}
 @PHDTHESIS{Gallot07,
   author = {G. Gallot},
   year = {2007},
   title = "Mod\'elisation dynamique et commande d'un robot anguille",
-  school = {Universit\'e de Nantes},
+  school = {Universit\'e de Nantes}
+}
+@PHDTHESIS{ElRafei08,
+  author = {M. El-Rafei},
+  year = {2008},
+  title = {Commande d'un robot Anguille},
+  school = {Universit\'e de Grenoble}
 }
 @INPROCEEDINGS{Hou2008,
   author = {S. Hou and S. Peng and Z. Yan and W. Zhang},
@@ -3308,6 +3335,12 @@ address = {Los Alamitos, CA, USA},
   school = {University of New Brunswick},
   type = {{PhD} dissertation}
 }
+@book{myers2014proceedings,
+  title={Proceedings of the 2012 International Conference on Detection and Classification of Underwater Targets},
+  author={Myers, Vincent and Quidu, Isabelle and Zerr, Benoit},
+  year={2014},
+  publisher={Cambridge Scholars Publishing}
+}
 @article{Paull2014,
   author = {L. Paull and S. Saeedi and M. Seto and H. Li},
   title = {{AUV} Navigation and Localization: A Review},
@@ -3355,22 +3388,74 @@ number={},
 pages={1-5},  
 doi={10.23919/OCEANS.2015.7401904}
 }
+@inproceedings{laranjeira2018local,
+  title={Local vision-based tether control for a line of underwater robots},
+  author={Laranjeira, Matheus and Dune, Claire and Hugel, Vincent},
+  booktitle={IEEE/RSJ International Conference on Intelligent Robots and Systems wokshop},
+  year={2018},
+  organization={IEEE}
+}
+@article{vautier2019restricted,
+  author={Vautier, Ulysse and Viel, Christophe and Wan, Jian and Jaulin, Luc and Hone, Robert and Dai, Ming},
+  title={Restricted Orientation Dubins Path with Application to Sailboats},
+  journal={IEEE Robotics and Automation Letters},
+  volume={4},
+  number={4},
+  pages={4515--4522},
+  year={2019},
+  publisher={IEEE}
+}
+@article{LapierreKarst2021,
+	author = {Lionel Lapierre and Rene Zapata and Pascal Lepinay and Benoit Ropars},
+	title = {Karst exploration: Unconstrained attitude dynamic control for an AUV},
+	journal = {Ocean Engineering},
+	volume = {219},
+	pages = {108321},
+	year = {2021},
+	issn = {0029-8018},
+	doi = {https://doi.org/10.1016/j.oceaneng.2020.108321},
+	url = {https://www.sciencedirect.com/science/article/pii/S002980182031235X},
+}
+
+%-------------------------------------------------------
+%Ground robotics
+%-------------------------------------------------------
+@article{lacroix2002autonomous,
+  author={Lacroix, Simon and Mallet, Anthony and Bonnafous, David and Bauzil, Gerard and Fleury, Sara and Herrb, Matthieu and Chatila, Raja},
+  title={Autonomous rover navigation on unknown terrains: Functions and integration},
+  journal={The International Journal of Robotics Research},
+  volume={21},
+  number={10-11},
+  pages={917--942},
+  year={2002},
+  publisher={SAGE Publications Sage UK: London, England}
+}
 
 %-------------------------------------------------------
 %Aerial robotics
 %-------------------------------------------------------
+@article{ruffier2005optic,
+  author={Ruffier, Franck and Franceschini, Nicolas},
+  title={Optic flow regulation: the key to aircraft automatic guidance},
+  journal={Robotics and Autonomous Systems},
+  volume={50},
+  number={4},
+  pages={177--194},
+  year={2005},
+  publisher={Elsevier}
+}
 @article{bayen_aircraft_2007,
+	author = {Bayen, Alexandre M. and Mitchell, Ian M. and Osihi, Meeko K. and Tomlin, Claire J.},
 	title = {Aircraft {Autolander} {Safety} {Analysis} {Through} {Optimal} {Control}-{Based} {Reach} {Set} {Computation}},
 	volume = {30},
 	number = {1},
 	journal = {Journal of Guidance, Control, and Dynamics},
-	author = {Bayen, Alexandre M. and Mitchell, Ian M. and Osihi, Meeko K. and Tomlin, Claire J.},
 	year = {2007},
 	pages = {68--77}
 }
 @article{mahony:hal-00488376,
-  TITLE = {{Nonlinear Complementary Filters on the Special Orthogonal Group}},
   AUTHOR = {Mahony, R. and Hamel, Tarek and Pflimlin, Jean-Michel},
+  TITLE = {{Nonlinear Complementary Filters on the Special Orthogonal Group}},
   URL = {https://hal.archives-ouvertes.fr/hal-00488376},
   NOTE = {16},
   JOURNAL = {{IEEE Transactions on Automatic Control}},
@@ -3410,6 +3495,42 @@ doi = {10.1109/ICRA.2011.5980229}
 	year = {2012},
 	author = {A. Desilles and H. Zidani and E. Cruck},
 	pages = {13--16}
+}
+@book{lozano2013unmanned,
+  title={Unmanned aerial vehicles: Embedded control},
+  author={Lozano, Rogelio},
+  year={2013},
+  publisher={John Wiley \& Sons}
+}
+
+%-------------------------------------------------------
+%General robotics
+%-------------------------------------------------------
+@InProceedings{euRathlon2015TAROS2016,
+	author="Winfield, Alan F. T.
+	and Franco, Marta Palau
+	and Brueggemann, Bernd
+	and Castro, Ayoze
+	and Limon, Miguel Cordero
+	and Ferri, Gabriele
+	and Ferreira, Fausto
+	and Liu, Xingkun
+	and Petillot, Yvan
+	and Roning, Juha
+	and Schneider, Frank
+	and Stengler, Erik
+	and Sosa, Dario
+	and Viguria, Antidio",
+	editor="Alboul, Lyuba
+	and Damian, Dana
+	and Aitken, Jonathan M.",
+	title="euRathlon 2015: A Multi-domain Multi-robot Grand Challenge for Search and Rescue Robots",
+	booktitle="Towards Autonomous Robotic Systems",
+	year="2016",
+	publisher="Springer International Publishing",
+	address="Cham",
+	pages="351--363",
+	isbn="978-3-319-40379-3"
 }
 
 %-------------------------------------------------------
@@ -3906,6 +4027,14 @@ year="2002"
   title =    {{Computer Vision, a modern approach}},
   publisher =    {Prentice Hall},
   year =     {2003}
+}
+@INPROCEEDINGS{NetoVictorinoCorreaFantoniFerreira2013,  
+	author={Miranda Neto, A. and Victorino, A. Corr\^ea and Fantoni, I. and Ferreira, J. V.},  
+	title={Real-time Collision Risk Estimation based on Pearson's Correlation Coefficient},  
+	booktitle={2013 IEEE Workshop on Robot Vision (WORV)},   
+	pages={40-45},  
+	doi={10.1109/WORV.2013.6521911},
+	year={2013},  
 }
 
 %-------------------------------------------------------
@@ -10084,7 +10213,6 @@ PUBLISHER = {ISTE Ltd and John Wiley \& Sons Inc}
   pages =        {342-357},
   year      =    {2008}
 }
-
 @Inproceedings{Trombettoni07,
   author    =    {G. Trombettoni and G. Chabert},
   title     =    {{Constructive Interval Disjunction}},
@@ -10093,7 +10221,6 @@ PUBLISHER = {ISTE Ltd and John Wiley \& Sons Inc}
   pages =        {635-650},
   year      =    {2007}
 }
-
 @Inproceedings{Araya12,
   author    =    {I. Araya and G. Trombettoni and B. Neveu},
   title     =    {{A Contractor Based on Convex Interval Taylor}},
@@ -10102,41 +10229,6 @@ PUBLISHER = {ISTE Ltd and John Wiley \& Sons Inc}
   pages =        {1-16},
   year      =    {2012}
 }
-
-
-
-@PHDTHESIS{Gallot07,
-  author = {G. Gallot},
-  year = {2007},
-  title = "Mod\'elisation dynamique et commande d'un robot anguille",
-  school = {Universit\'e de Nantes}
-}
-
-@PHDTHESIS{ElRafei08,
-  author = {M. El-Rafei},
-  year = {2008},
-  title = {Commande d'un robot Anguille},
-  school = {Universit\'e de Grenoble}
-}
-
-@Inproceedings{Boyer06,
-  author    =    {F. Boyer and M. Alamir and D. Chablat and W. Khalil and A. Leroyer and P. Lemoine},
-  title     =    {Robot anguille sous-marin en 3d},
-  booktitle =    {Techniques de l'Ing\'enieur},
-  year      =    {2006},
-}
-
-@article{BoyerPorez06,
-  author = {F. Boyer and M. Porez and W. Khalil},
-  title = {Macro-continuous computed torque algorithm for a three-dimensional eel-like robot},
-  journal = {IEEE Transactions on Robotics},
-  volume= {22},
-  number = {4},
-  pages = {763--775},
-   year = {2006}
-}
-
-
 @ARTICLE{Delaleau:03,
   author = {V. Hagenmeyer and E. Delaleau},
   year = 2003,
@@ -10495,9 +10587,8 @@ month = {October}
 }
 
 @InProceedings{Lapierre03,
-  author =  {D. Soetanto and L. Lapierre and A. Pascoal
-},
-  title =  { {Adaptive, Non-Singular Path-Following Control of Dynamic Wheeled Robots}},
+  author = {D. Soetanto and L. Lapierre and A. Pascoal},
+  title = {{Adaptive, Non-Singular Path-Following Control of Dynamic Wheeled Robots}},
   booktitle =  {IEEE Conference on Decision and Control},
   pages = {1765--1770},
   volume= {2},
@@ -10614,7 +10705,6 @@ month = {October}
   pages = {761--779},
    year = {2009}
 }
-
 @article{Boyer:06,
   author = {F. Boyer and M. Porez and W. Khalil},
   title = {Macro-continuous computed torque algorithm for a three-dimensional eel-like robot},
@@ -10624,7 +10714,6 @@ month = {October}
   pages = {763--775},
    year = {2006}
 }
-
 @article{Dubins57,
   author = {L. E. Dubins},
   title = {On curves of minimal length with a constraint on average curvature, and with
@@ -10665,16 +10754,13 @@ month = {October}
   pages = {365--385},
    year = {2009}
 }
-
 @BOOK{Klein:Morelli:06,
   author = {V. Klein, E. Morelli},
   year = 2006,
   title = {Aircraft System Identification: Theory And Practice},
   publisher = {American Institute of Aeronautics and Astronautics},
 }
-
-
- @article{FliessJoin:13,
+@article{FliessJoin:13,
   author = {M. Fliess and C. Join},
   title = {Model-free control},
   journal = {International Journal of Control},
@@ -10683,14 +10769,12 @@ month = {October}
   pages = {2228--2252},
    year = {2013}
 }
-
 @BOOK{LaValle:06,
   author = {S. LaValle},
   year = 2006,
   title = {Planning algorithm},
   publisher = {Cambridge University Press},
 }
-
 @BOOK{Beard:McLain,
   author = {R. Beard and T. McLain},
   year = 2012,
@@ -10703,8 +10787,6 @@ month = {October}
   journal = {Technical Report Report LMSC4-22-66-1, Lockheed Missiles and Space},
    year = {1965}
 }
-
-
 @article{Candau:complex,
   author = {Y. Candau and T. Raissi and N. Ramdani and L. Ibos},
   title = {Complex Interval Arithmetic Using Polar Form},
@@ -10714,16 +10796,12 @@ month = {October}
   pages = {1--20},
    year = {2006}
 }
-
 @BOOK{Petkovic98,
   author = {M. Petkovic and L. Petkovic},
   title = {Complex Interval Arithmetic and Its Applications},
   publisher = {John Wiley \& Sons, Mathematics},
   year = {1998}
  }
-
-
-
 @InProceedings{Cousot97,
   author =  {P. Cousot and R. Cousot},
   title =  {Abstract Interpretation: A Unified Lattice Model for Static Analysis of Programs by Construction or Approximation of Fixpoints},
@@ -10732,7 +10810,6 @@ month = {October}
   year = {1977},
   address = {Los Angeles, California}
 }
-
 @inproceedings{CousotCousot79-1,
    author =    {P. Cousot and R. Cousot},
    title =     {Systematic design of program analysis frameworks},
@@ -10763,9 +10840,6 @@ month = {October}
   pages     = {197--214},
   year      = {2013}
 }
-
-
-
 
 @BOOK{dubois:prade:88,
   author = {D. Dubois and H. Prade},
@@ -10799,7 +10873,6 @@ month = {October}
   year = {2013},
   address = {Tokyo Big Sight, Japan}
 }
-
 
 @article{mullier13,
   author = {O. Mullier and E. Goubault and M. Kieffer and S. Putot},
